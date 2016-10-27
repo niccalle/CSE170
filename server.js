@@ -27,6 +27,13 @@ app.get("/workout/:workout/:playlist/ready", function(req,res){
     "playlist": req.params.playlist
   });
 })
+app.get("/workout/:workout/:playlist/begin", function(req,res){
+  res.render("begin", {
+    "workout": req.params.workout,
+    "playlist": req.params.playlist
+  });
+})
+
 
 app.listen(3000, function(){
   console.log("Listening on port 3000");
