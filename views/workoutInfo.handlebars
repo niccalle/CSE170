@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-xs-12">
+    <h1>{{workout}}</h1>
+  </div>
+  <ul>
+    {{#each workoutInfo}}
+    <li>{{@key}}: {{this}}</li>
+    {{/each}}
+  </ul>
+  <div class="col-xs-4">
+    <a href="/workout/{{workout}}/playlist">
+      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Choose a Playlist!</button>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-xs-12 text-center">
+    <h2>Workout</h1>
+  </div>
+  <div class="col-xs-12 text-center">
+    <h3>{{workout}}</h1>
+  </div>
+  <div class="col-xs-12 text-center">
+    <h2>Playlist</h1>
+  </div>
+  <div class="col-xs-12 text-center">
+    <h3>{{playlist}}</h1>
+  </div>
+  <div class="col-xs-12 text-center">
+    <h1 id="timer"></h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <a href="/">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Quit Workout</button>
+      </a>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var seconds = 60;
+    setInterval(oneFunction, 1000);
+    function oneFunction(){
+      $("#timer").html(seconds);
+      seconds--;
+    }
+  });
+</script>

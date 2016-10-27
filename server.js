@@ -15,6 +15,19 @@ app.get("/workoutList", function(req,res){
     "workouts": ["Leg Day", "Chest Day", "Cardio", "Upper Body", "Push Day", "Crossfit", "Cycling"]
   })
 });
+app.get("/workoutInfo/:workout", function(req,res){
+  res.render("workoutInfo", {
+    "workout": req.params.workout,
+    "workoutInfo": {
+      "time": "53 minutes",
+      "Bench Press": "3x5 135 lbs, 3 minute rest",
+      "Push ups": "20 pushups, 1 minute rest",
+      "Chest Flies": "3x8 35 lbs, 2 minute rest",
+      "Incline Bench Press": "3x8 95 lbs, 2 minute rest",
+      "Crossover Cable Flies": "3x8 50 lbs, 2 minute rest"
+    }
+  })
+})
 app.get("/workout/:workout/playlist", function(req,res){
   res.render("playlist", {
     "workout": req.params.workout,
@@ -33,7 +46,6 @@ app.get("/workout/:workout/:playlist/begin", function(req,res){
     "playlist": req.params.playlist
   });
 })
-
 
 app.listen(3000, function(){
   console.log("Listening on port 3000");
