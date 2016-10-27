@@ -1,9 +1,30 @@
-<div class="container">
-  <ul>
-    {{#each workouts}}
-      <a href="/workoutInfo/{{this}}">
-        <li><h1>{{this}}</h1></li>
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<div class="container test">
+  <div class="row">
+    <div class="col-xs-4">
+      <a href="/">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Log Out</button>
       </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 test2">
+      <h1 class="col-xs-12"> My Workouts </h1>
+    </div>
+  </div>
+
+  <ul class="workouts" id="workouts_list">
+    {{#each workouts}}
+      <li class="each_workout">
+        <div class="row">
+          <div class="col-xs-4">{{this}}</div>
+          <div class="col-xs-4"><a href="/workoutInfo/{{this}}" type="button" class="btn btn-success">Choose</a></div>
+          <div class="col-xs-4"><button type="button" class="btn btn-danger">Remove</button></div>
+        </div>
+      </li>
     {{/each}}
   </ul>
+
+
 </div>
