@@ -17,6 +17,9 @@
     "url": "https://github.com/niccalle/CSE170/issues"
   },
   "homepage": "https://github.com/niccalle/CSE170#readme",
+  "engines": {
+    "node": "6.9.1"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
