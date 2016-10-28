@@ -31,7 +31,7 @@ app.get("/workoutInfo/:workout", function(req,res){
 app.get("/workout/:workout/playlist", function(req,res){
   res.render("playlist", {
     "workout": req.params.workout,
-    "playlists": ["EDM", "Alt Rock", "Discover Weekly", "Hip Hop", "Trap shit", "Anime Music"]
+    "playlists": ["EDM", "Alt Rock", "Discover Weekly", "Hip Hop", "Acoustic", "Classical"]
   })
 });
 app.get("/workout/:workout/:playlist/ready", function(req,res){
@@ -46,7 +46,9 @@ app.get("/workout/:workout/:playlist/begin", function(req,res){
     "playlist": req.params.playlist
   });
 })
-
+app.get("/getSongs/:playlist", function(req,res){
+  res.send({songs: ["270890617","210883449"]});
+})
 app.listen(3000, function(){
   console.log("Listening on port 3000");
 })
