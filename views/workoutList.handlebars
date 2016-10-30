@@ -1,65 +1,47 @@
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
-<script src="/js/jquery-3.1.1.min.js"></script>
-<!-- <div class="my-nav">
-  <div class="container" id="top-title">
-    <div class="col-xs-8">
-       <h1>
-         Workouts
-       </h1>
-    </div>
-    <div class="col-xs-4">
-      <a href="/">
-        <h1>
-          Log Out
-        </h1>
-      </a>
-    </div>
-  </div>
-</div> -->
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
       <div class="navbar-brand navbar-left">
-        <h1>Workouts</h1>
+        Workouts
       </div>
       <div class="navbar-brand navbar-right">
         <a href="#">
-          <h1 id="header">
-            Sign Out
-          </h1>
+          Sign Out
         </a>
       </div>
     </div>
 </div>
-
 <div class="test">
   <ul class="workouts" id="whole_list">
     {{#each workouts}}
-      <li class="each_workout" id="workouts_list-{{@index}}">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6 workout_name"><a href="/workoutInfo/{{this}}"><h1>{{this}}</h1></a></div>
-            <!-- <div class="col-xs-4"><a href="/workoutInfo/{{this}}" type="button" class="btn btn-success">Choose</a></div> -->
-            <div class="col-xs-6"><button type="button" class="btn btn-default remove-btn">Remove</button></div>
-          </div>
-          <div class="row">
-            <div class="col-xs-4">
-              <img src="/assets/dumbbell.jpeg" class="img-rounded"/>
+
+        <li class="each_workout" id="workouts_list-{{@index}}">
+          <!-- <div class="container">
+            <div class="row">
+              <div class="col-xs-6 workout_name"><a href="/workoutInfo/{{this}}">{{this}}</a></div>
+              <div class="col-xs-6 remove-btn"><label>Remove</label></div>
             </div>
-            <div class="col-xs-4">
-              <img src="/assets/jumping.png" class="img-rounded"/>
+            <div class="row">
+              <div class="col-xs-4">
+                <img src="/assets/shaggy.jpg" class="img-rounded"/>
+              </div>
+              <div class="col-xs-4">
+                <img src="/assets/bears.jpg" class="img-rounded"/>
+              </div>
+              <div class="col-xs-4">
+                <img src="/assets/manuel.jpg" class="img-rounded"/>
+              </div>
             </div>
-            <div class="col-xs-4">
-              <img src="/assets/running.png" class="img-rounded"/>
-            </div>
-          </div>
-        </div>
-      </li>
+          </div> -->
+          <a href="/workoutInfo/{{this}}"><label class="workout-label">{{this}}</label></a>
+          <label class="remove-btn">x</label>
+      </a>
     {{/each}}
   </ul>
 
   <div class="row">
     <div class="col-xs-12">
-      <div class="col-xs-4"><button type="button" class="btn btn-info" id="add-btn">Add a new workout</button></div>
+      <div class="col-xs-4"><a href="/addWorkout"><button type="button" class="btn btn-info" id="add-btn">Add a new workout</button></a></div>
     </div>
   </div>
 </div>
@@ -68,7 +50,7 @@
   var ListenerSuite = {
     removeListener: function(){
       $('.remove-btn').click(function(){
-        $(this).parent().parent().parent().parent().remove();
+        $(this).parent().remove();
       });
     }
   }

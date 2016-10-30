@@ -23,18 +23,33 @@
 }
 
 .each_workout{
-    background-color: #fff;
-    padding: 20px 8px 16px;
+    position: relative;
+    background-image: url("/assets/testthumb.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 20%;
+    padding: 20px 8px 16px 20px;
     font-size: 18px;
-    border-bottom: 1px solid pink;
-    height: 15%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
+.set{
+  position: relative;
+  height: 40%;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: solid;
+  border-width: thin;
 }
 #whole_list {
   height:100%;
   width: 100%;
+  padding: 0 10px;
+  /*padding-left: 15px;
+  padding-right:15px;*/
 }
 /*ul#workouts_list li
 {
@@ -51,7 +66,7 @@ ul#workouts_list li a{
 }*/
 body {
   height: 100vh;
-  background-color: #fafafa;
+  background-color: ##f9fbf9;
 }
 .my-nav{
   height: 7%;
@@ -59,7 +74,7 @@ body {
   border-bottom: solid;
   border-width: thin;
   border-color: lightgrey;
-  background-color: #fff;
+  background-color: ##f9fbf9;
   font-weight: thin;
 }
 .my-nav h1{
@@ -73,11 +88,11 @@ body {
 }
 .test{
     height: 80%;
-    padding-top: 10%;
+    padding-top: 15%;
 }
 img{
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 }
 .h1 {
     text-align: center;
@@ -88,7 +103,7 @@ img{
 }
 .navbar{
   height: 5%;
-  background-color: #fff;
+  background-color:#d6e6d4;
 }
 button.remove-btn{
   position: absolute;
@@ -105,10 +120,50 @@ button.remove-btn{
 
 .foot-row{
   position: relative;
+  border-top: solid;
+  border-width: thin;
+  border-color: lightgrey;
+  padding: 20px 10px;
+  height: 50%;
+  width: 100%;
+}
+
+.navbar-right{
+  right: 30px;
+  position: absolute;
+}
+
+label.remove-btn{
+  position: absolute;
+  color: lightgrey;
+  font-weight: lighter;
+  bottom: 10px;
+  right: 10px;
+}
+
+label.workout-label{
+  position: absolute;
+  color: white;
+  bottom: 10px;
+}
+.set-row{
+  position: relative;
+  height: 33%;
+  width: 100%;
+}
+.set-name{
   border-bottom: solid;
   border-width: thin;
   border-color: lightgrey;
-  padding-top: 75px;
-  height: 50%;
-  width: 100%;
+  background-color: #9da69c;
+  color: white;
+  padding-top: 5px;
+}
+.delete {
+  position: relative;
+  left: 10px;
+}
+.add-set{
+  position: relative;
+  right: 10px;
 }

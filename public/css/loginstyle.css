@@ -1,0 +1,51 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+  background-image: url("/assets/fitness2.png");
+  background-size: cover;
+}
+
+.login-box
+{
+   background-color: white;
+   position: absolute;
+   bottom: 10%;
+   border: solid;
+   border-width: thin;
+   border-color: lightgrey;
+   width: 80%;
+   height: 40%;
+   left: 10%;
+}
+/*This box has user/pass, takes up 80% of the login box*/
+.credential-box{
+  position: relative;
+  width: 100%;
+  height: 80%;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: lightgrey;
+  padding: 15px 15px 15px 15px;
+}
+
+.login-btn-box{
+  background-color: #c2c699;
+  position: relative;
+  width: 100%;
+  height: 20%;
+}
+
+.input-row{
+  height: 50%;
+}
+
+.ccon{ /*Container for the credential box*/
+  height: 100%;
+}
+label
+{
+  color: #484848;
+}

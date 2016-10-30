@@ -48,6 +48,9 @@ app.get("/workout/:workout/:playlist/begin", function(req,res){
 })
 app.get("/getSongs/:playlist", function(req,res){
   res.send({songs: ["270890617","210883449"]});
+});
+app.get("/addWorkout", function(req,res){
+  res.render("addWorkout");
 })
 app.listen(app.get('port'), function(){
   console.log("Listening on port "+app.get('port'));

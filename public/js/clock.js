@@ -32,15 +32,15 @@ function drawCanvas(seconds, start){
 
     //======= reset canvas
 
-    ctx.fillStyle="#fafafa";
+    ctx.fillStyle="#fff";
     ctx.fillRect(0,0,cWidth,cHeight);
 
     //========== base arc
 
     ctx.beginPath();
     ctx.strokeStyle="#0966df";
-    ctx.lineWidth=14;
-    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 100,(Math.PI/180)*0,(Math.PI/180)*360,false);
+    ctx.lineWidth=7;
+    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 25,(Math.PI/180)*0,(Math.PI/180)*360,false);
     ctx.stroke();
     ctx.closePath();
 
@@ -48,24 +48,24 @@ function drawCanvas(seconds, start){
 
     ctx.beginPath();
     ctx.strokeStyle="#df8209";
-    ctx.lineWidth=14;
-    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 100,(Math.PI/180)*270,(Math.PI/180)*angle,false);
+    ctx.lineWidth=7;
+    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 25,(Math.PI/180)*270,(Math.PI/180)*angle,false);
     ctx.stroke();
     ctx.closePath();
 
     //======== inner shadow arc
 
-    grad=ctx.createRadialGradient(cWidth/2,cHeight/2,cWidth/2 - 120,cWidth/2,cHeight/2,cWidth/2 - 85);
-    grad.addColorStop(0.0,'rgba(0,0,0,.4)');
-    grad.addColorStop(0.5,'rgba(0,0,0,0)');
-    grad.addColorStop(1.0,'rgba(0,0,0,0.4)');
-
-    ctx.beginPath();
-    ctx.strokeStyle=grad;
-    ctx.lineWidth=14;
-    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 100,(Math.PI/180)*0,(Math.PI/180)*360,false);
-    ctx.stroke();
-    ctx.closePath();
+    // grad=ctx.createRadialGradient(cWidth/2,cHeight/2,cWidth/2 - 32,cWidth/2,cHeight/2,cWidth/2 - 85);
+    // grad.addColorStop(0.0,'rgba(0,0,0,.4)');
+    // grad.addColorStop(0.5,'rgba(0,0,0,0)');
+    // grad.addColorStop(1.0,'rgba(0,0,0,0.4)');
+    //
+    // ctx.beginPath();
+    // ctx.strokeStyle=grad;
+    // ctx.lineWidth=7;
+    // ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 25,(Math.PI/180)*0,(Math.PI/180)*360,false);
+    // ctx.stroke();
+    // ctx.closePath();
 
     //======== bevel arc
 
@@ -76,7 +76,7 @@ function drawCanvas(seconds, start){
     ctx.beginPath();
     ctx.strokeStyle=grad;
     ctx.lineWidth=1;
-    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 107,(Math.PI/180)*0,(Math.PI/180)*360,true);
+    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 28,(Math.PI/180)*0,(Math.PI/180)*360,true);
     ctx.stroke();
     ctx.closePath();
 
@@ -89,20 +89,20 @@ function drawCanvas(seconds, start){
     ctx.beginPath();
     ctx.strokeStyle=grad;
     ctx.lineWidth=1;
-    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 93,(Math.PI/180)*0,(Math.PI/180)*360,true);
+    ctx.arc(cWidth/2,cHeight/2,cWidth/2 - 21,(Math.PI/180)*0,(Math.PI/180)*360,true);
     ctx.stroke();
     ctx.closePath();
 
     //====== Labels
 
     var textColor='#646464';
-    var textSize="36";
+    var textSize="20";
     var fontFace="helvetica, arial, sans-serif";
 
     ctx.fillStyle=textColor;
     ctx.font=textSize+"px "+fontFace;
-    ctx.fillText('MIN',cWidth/2-95,cHeight/2-70);
-    ctx.fillText('SEC',cWidth/2+25,cHeight/2-35);
+    ctx.fillText('MIN',cWidth/2-85,cHeight/2-50);
+    ctx.fillText('SEC',cWidth/2+35,cHeight/2-35);
 
     //====== Values
 
@@ -111,14 +111,14 @@ function drawCanvas(seconds, start){
     ctx.fillStyle='#6292ae';
 
     if (min>9) {
-      ctx.font='84px '+fontFace;
+      ctx.font='50px '+fontFace;
       ctx.fillText('9' ,cWidth/2-55,cHeight/2+35);
 
-      ctx.font='24px '+fontFace;
+      ctx.font='18px '+fontFace;
       ctx.fillText('+' ,cWidth/2-72,cHeight/2+15);
     }
     else {
-      ctx.font='150px '+fontFace;
+      ctx.font='125px '+fontFace;
       ctx.fillText(min ,cWidth/2-100,cHeight/2+50);
     }
 

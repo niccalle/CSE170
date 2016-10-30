@@ -43,7 +43,7 @@ $(document).ready(function(){
     console.log("Ready");
     widget.bind(SC.Widget.Events.PLAY, function(){
       $("#mycanvas").remove();
-      $("<canvas id=\"mycanvas\" width=\"750\" height=\"750\"></canvas>").appendTo(".canvas");
+      $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
       canvasListener();
       drawCanvas(20, true);
       startTimer =  setInterval(updateSeconds, 1000);
