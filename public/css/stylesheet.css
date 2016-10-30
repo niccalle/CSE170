@@ -161,11 +161,14 @@ label.workout-label{
 }
 .set-name-input{
   width: 200px;
+  height: 30px;
   border: .5px solid lightgrey;
   border-radius: 4px;
+  color: black;
 }
 .set-name-input:focus{
-  border: 1px solid blue;
+  outline: none;
+  border: 2px solid pink;
 }
 
 .delete {
@@ -186,4 +189,7 @@ label.workout-label{
   width: 80px;
   border: .5px solid lightgrey;
   border-radius: 4px;
+}
+.each-exercise {
+  margin-bottom: 15px;
 }

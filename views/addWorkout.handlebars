@@ -13,11 +13,11 @@
 </div>
 <div class="test">
   <ul id="whole_list">
-    <li class="set">
+    <li class="each-exercise" id="exercise_list-1">
       <div class="set-row text-center set-name">
         <span class="delete">-</span>
         <span class="set-input">
-          <input class="set-name-input" type="text" name="exercise" value="Exercise name">
+          <input class="set-name-input" type="text" name="exercise" value="" placeholder="Exercise name">
         </span>
       </div>
       <div class="set-row">
@@ -33,3 +33,37 @@
     </li>
   </ul>
 </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-center"><button type="button" class="btn btn-info" id="add-exercise-btn">Add a new exercise</button></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var ListenerSuite = {
+    removeListener: function(){
+      $('.remove-btn').click(function(){
+        $(this).parent().remove();
+      });
+    }
+  }
+  $(document).ready(function(){
+    ListenerSuite.removeListener();
+    mockhide = function(){
+      console.log("hide");
+      $(this).hide();
+
+    };
+    $("#add-exercise-btn").click(function(){
+      var $clone = $("#exercise_list-1").clone();
+      $clone.find("input:text").val("");
+      $clone.prop('id', 'exercise-list-' + ($("#whole_list").children().length + 1));
+      // $clone.find(".workout_name").text(phrase);
+      // $clone.find(".btn-success").attr("href", "/workoutInfo/"+phrase);
+      $clone.appendTo("#whole_list");
+      ListenerSuite.removeListener();
+    })
+  })
+</script>
