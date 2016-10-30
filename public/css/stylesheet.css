@@ -160,10 +160,21 @@ label.workout-label{
   padding-top: 5px;
 }
 .delete {
-  position: relative;
+  position: absolute;
+  display: inline-block;
+  text-align: left;
+  line-height: 50px;
   left: 10px;
 }
+.set-number {
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+}
 .add-set{
-  position: relative;
+  position: absolute;
+  display: inline-block;
+  text-align: right;
+  line-height: 50px;
   right: 10px;
 }
