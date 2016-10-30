@@ -8,7 +8,7 @@ $(document).ready(function(){
   var widgetIframe = document.getElementById('sc-widget'),
       widget       = SC.Widget(widgetIframe);
   var seconds = 20;
-  var songs;
+  var playlist;
   var songNum = 0;
   var startTimer;
   /*Initial dummy timer*/
@@ -25,12 +25,12 @@ $(document).ready(function(){
     if(seconds == 0){
       songNum++;
       clearInterval(startTimer);
-      loadSong(songs[songNum])
+      loadSong(playlist.tracks[songNum])
     }
   }
-  function loadSong(api){
+  function loadSong(track){
     seconds = 20;
-    widget.load("https://api.soundcloud.com/tracks/"+api
+    widget.load("https://api.soundcloud.com/tracks/"+track.id
     // ,
     // {
     //   callback: function(){
@@ -49,8 +49,8 @@ $(document).ready(function(){
       startTimer =  setInterval(updateSeconds, 1000);
     });
     $.get("/getSongs/"+$("#playlist").text(), function(data){
-      songs = data['songs'];
-      loadSong(songs[0]);
+      playlist = data['songs'];
+      loadSong(playlist.tracks[0]);
 
     })
 
