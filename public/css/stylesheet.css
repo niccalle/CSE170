@@ -178,3 +178,11 @@ label.workout-label{
   line-height: 50px;
   right: 10px;
 }
+.exercise-input{
+  margin-top:15px;
+  margin-left:100px;
+  width: 80px;
+  border: .5px solid lightgrey;
+  border-radius: 4px;
+
+}
