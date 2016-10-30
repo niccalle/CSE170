@@ -159,6 +159,15 @@ label.workout-label{
   color: white;
   padding-top: 5px;
 }
+.set-name-input{
+  width: 200px;
+  border: .5px solid lightgrey;
+  border-radius: 4px;
+}
+.set-name-input:focus{
+  border: 1px solid blue;
+}
+
 .delete {
   position: absolute;
   display: inline-block;
@@ -166,17 +175,10 @@ label.workout-label{
   line-height: 50px;
   left: 30px;
 }
-.set-number {
+.set-input {
   display: inline-block;
   text-align: center;
   line-height: 50px;
-}
-.add-set{
-  position: absolute;
-  display: inline-block;
-  text-align: right;
-  line-height: 50px;
-  right: 30px;
 }
 .exercise-input{
   margin-top:15px;
@@ -184,5 +186,4 @@ label.workout-label{
   width: 80px;
   border: .5px solid lightgrey;
   border-radius: 4px;
-
 }
