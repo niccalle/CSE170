@@ -88,7 +88,7 @@ body {
 }
 .test{
     height: 80%;
-    padding-top: 15%;
+    padding-top: 5%;
 }
 img{
   width: 50px;
@@ -177,6 +177,7 @@ label.workout-label{
   text-align: left;
   line-height: 50px;
   left: 30px;
+  margin-top: -5px;
 }
 .set-input {
   display: inline-block;
@@ -192,4 +193,13 @@ label.workout-label{
 }
 .each-exercise {
   margin-bottom: 15px;
+  padding-bottom: 5px;
+  border: .5px solid lightgrey;
+}
+.add-workouts {
+  margin-top: 70px;
+}
+.delete-exercise-btn{
+  margin-left: -30px;
+  margin-top: -5px;
 }
