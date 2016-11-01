@@ -24,7 +24,7 @@
 
 <div class="test">
   <ul id="whole_list">
-    <li class="each-exercise" id="exercise_list-1">
+    <li class="each-exercise">
       <div class="set-row text-center set-name">
         <span class="delete">
           <button type="button" class="delete-exercise-btn" id="remove-btn"><img src="/assets/delete.png"></button>
@@ -54,7 +54,10 @@
   var ListenerSuite = {
     removeListener: function(){
       $('.delete-exercise-btn').click(function(){
-        $(this).parent().parent().parent().remove();
+        var $test = $(".each-exercise");
+        if ($test.length !== 1) {
+          $(this).parent().parent().parent().remove();
+        }
       });
     }
 
@@ -67,11 +70,10 @@
 
     };
     $("#add-exercise-btn").click(function(){
-      console.log($("#exercise_list-1").length);
       // if ($("exercise_list-1").length != 0) {
-        var $clone = $("#exercise_list-1").clone();
+        var $test = $(".each-exercise");
+        var $clone = ($test).first().clone();
         $clone.find("input:text").val("");
-        $clone.prop('id', 'exercise-list-' + ($("#whole_list").children().length + 1));
         $clone.appendTo("#whole_list");
         ListenerSuite.removeListener();
       //}
