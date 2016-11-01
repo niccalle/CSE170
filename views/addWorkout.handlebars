@@ -47,20 +47,31 @@
   </ul>
 </div>
 
-
-
-
 <script type="text/javascript">
   var ListenerSuite = {
     removeListener: function(){
       $('.delete-exercise-btn').click(function(){
         $(this).parent().parent().parent().remove();
       });
-    }
+    }, 
 
+    submitListener: function(){
+      $("#submit-workout-btn").click(function(){
+        var json = {};
+        var $exercises = $(".each-exercise");
+        for( var i = 0; i < $exercises.length; i++){
+          // $input = $exercises[i].find("input[name=exercise]");
+          console.log("Exercise name: "+ $input.val());
+          console.log($exercises[i]);
+        }
+      }
+      )
+
+    }
   }
   $(document).ready(function(){
     ListenerSuite.removeListener();
+    ListenerSuite.submitListener();
     mockhide = function(){
       console.log("hide");
       $(this).hide();
