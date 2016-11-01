@@ -65,15 +65,36 @@
     submitListener: function(){
       $("#submit-workout-btn").click(function(){
         var json = {};
-        var $exercises = $(".each-exercise");
-        for( var i = 0; i < $exercises.length; i++){
-          // $input = $exercises[i].find("input[name=exercise]");
-          console.log("Exercise name: "+ $input.val());
-          console.log($exercises[i]);
-        }
+        json.name = "test";
+        var $exercises = $("#whole_list").children();
+        var exercises = [];
+        $(".each-exercise").each(function(i){
+          /*TODO: Fill the exercises list with objects that resemble the data.json exercises*/
+
+          var thisExercise = {}; 
+          var exerciseName = $(this).find("input[name=exercise]").val();
+          var weight = $(this).find("input[name=weight]").val();
+          var set = $(this).find("input[name=sets]").val();
+          var reps = $(this).find("input[name=reps]").val();
+          var rest = $(this).find("input[name=rest]").val();
+          thisExercise.name = exerciseName;
+          thisExercise.weight = weight; 
+          thisExercise.sets = set;
+          thisExercise.reps = reps; 
+          thisExercise.rest = rest; 
+
+          exercises.push(thisExercise); 
+
+          console.log($(this))
+        });
+        json.workoutInfo = {};
+        json.workoutInfo.exercises = exercises; 
+        console.log(json); 
+      //$.post("/submitWorkout", json, function(){
+        //console.log("worked out");
+      //})
       }
       )
-
     }
   }
   $(document).ready(function(){
