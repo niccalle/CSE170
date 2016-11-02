@@ -5,7 +5,7 @@
         Workouts
       </div>
       <div class="navbar-brand navbar-right">
-        <a href="#">
+        <a href="/">
           Sign Out
         </a>
       </div>
@@ -14,7 +14,7 @@
 
 <div class="row text-center col-xs-12 workout-name-input">
   <span>
-    <input class="workout-input" type="text" name="exercise" value="" placeholder="Workout name">
+    <input class="workout-input" type="text" name="workout" value="" placeholder="Workout name">
   </span>
 </div>
 
@@ -71,7 +71,7 @@
     submitListener: function(){
       $("#submit-workout-btn").click(function(){
         var json = {};
-        json.name = "test";
+        json.name = $(".workout-input").val();
         var $exercises = $("#whole_list").children();
         var exercises = [];
         $(".each-exercise").each(function(i){
