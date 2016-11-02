@@ -1,5 +1,5 @@
 {
-  "workouts": [
+  "workouts":[
     {
       "name": "Leg Day",
       "workoutInfo": {
@@ -167,37 +167,9 @@
           }
         ]
       }
-    },
-    {
-      "name": "test",
-      "workoutInfo": {
-        "exercises": [
-          {
-            "name": "bench",
-            "weight": "120",
-            "sets": "4",
-            "reps": "5",
-            "rest": "120"
-          }
-        ]
-      }
-    },
-    {
-      "name": "test",
-      "workoutInfo": {
-        "exercises": [
-          {
-            "name": "squats",
-            "weight": "180",
-            "sets": "5",
-            "reps": "5",
-            "rest": "120"
-          }
-        ]
-      }
     }
   ],
-  "playlists": [
+  "playlists":[
     {
       "name": "EDM",
       "tracks": [

@@ -56,4 +56,10 @@ module.exports = function(app){
   app.get("/addWorkout", function(req,res){
     res.render("addWorkout");
   });
+  app.post("/submitWorkout", function(req,res){
+    var workout = JSON.parse(req.body.data);
+    json.workouts.push(workout);
+    fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
+
+  })
 }
