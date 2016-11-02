@@ -195,6 +195,76 @@
           }
         ]
       }
+    },
+    {
+      "name": "test",
+      "workoutInfo": {
+        "exercises": [
+          {
+            "name": "nic's bench press",
+            "weight": "240",
+            "sets": "5",
+            "reps": "5",
+            "rest": "30"
+          }
+        ]
+      }
+    },
+    {
+      "name": "test",
+      "workoutInfo": {
+        "exercises": [
+          {
+            "name": "bob2",
+            "weight": "40",
+            "sets": "3",
+            "reps": "12",
+            "rest": "5"
+          }
+        ]
+      }
+    },
+    {
+      "name": "test",
+      "workoutInfo": {
+        "exercises": [
+          {
+            "name": "",
+            "weight": "",
+            "sets": "",
+            "reps": "",
+            "rest": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "",
+      "workoutInfo": {
+        "exercises": [
+          {
+            "name": "",
+            "weight": "",
+            "sets": "",
+            "reps": "",
+            "rest": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "knv",
+      "workoutInfo": {
+        "exercises": [
+          {
+            "name": "",
+            "weight": "",
+            "sets": "",
+            "reps": "",
+            "rest": ""
+          }
+        ]
+      }
     }
   ],
   "playlists": [
