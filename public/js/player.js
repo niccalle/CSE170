@@ -47,6 +47,8 @@ $(document).ready(function(){
       canvasListener();
       drawCanvas(20, true);
       startTimer =  setInterval(updateSeconds, 1000);
+      responsiveVoice.speak("Begin your workout", "UK English Male");
+
     });
     $.get("/getSongs/"+$("#playlist").text(), function(data){
       playlist = data['songs'];
