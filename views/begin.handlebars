@@ -32,12 +32,21 @@
 <div class="footer">
   <div class="foot-row">
     <div class="container">
-      <label>{{workout}}</label>
+      <label>
+        <span id="workout">{{workout}}</span>: <span id="exercise"></span>
+      </label>
+      <p id="workout-info">
+        Set: <span id="set-number"></span>
+        Reps: <span id="rep-number"></span>
+        Weight: <span id="weight-number"></span>
+      </p>
     </div>
   </div>
   <div class="foot-row">
     <div class="container">
-      <label id="playlist">{{playlist}}</label>
+      <label>
+        <span id="playlist">{{playlist}}</span>: <span id="song-name"></span>
+      </label>
     </div>
   </div>
 </div>

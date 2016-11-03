@@ -48,11 +48,15 @@ module.exports = function(app){
     });
   })
   //Returns a JSON object of the playlist
-  app.get("/getSongs/:playlist", function(req,res){
+  app.get("/getPlaylist/:playlist", function(req,res){
     //Function to match object with the playlist name
     var findFunc = helper.findHelper(req.params.playlist);
     res.send({songs: json.playlists.find(findFunc)});
   });
+  app.get("/getWorkout/:workout", function(req,res){
+    var findFunc = helper.findHelper(req.params.workout);
+    res.send({workout: json.workouts.find(findFunc)});
+  })
   app.get("/addWorkout", function(req,res){
     res.render("addWorkout");
   });
