@@ -23,7 +23,7 @@
     <div class="col-xs-12">
       <div class="text-center">
         <button type="button" class="btn btn-info text-left" id="add-exercise-btn">Add a new exercise</button>
-        <a href="/workoutList">
+        <a href="#">
           <button type="button" class="btn btn-success text-right" id="submit-workout-btn">Submit!</button>
         </a>
       </div>
@@ -85,48 +85,45 @@
         json.name = $(".workout-input").val();
         var $exercises = $("#whole_list").children();
         var exercises = [];
+        var validInputs = true;
         $(".each-exercise").each(function(i){
           /*TODO: Fill the exercises list with objects that resemble the data.json exercises*/
 
           var thisExercise = {};
           var exerciseName = $(this).find("input[name=exercise]").val();
           var weight = $(this).find("input[name=weight]").val();
-          var validInputs = true; 
+          
           if(isNaN(weight) || parseInt(weight, 10) < 0){
             $("#weight-label").text("Please enter a number!");
-            validInputs = false; 
+            validInputs = false;
           }else{
             $("#weight-label").text("");
-            validInputs = true; 
-
+          
           }
           var set = $(this).find("input[name=sets]").val();
           if(isNaN(set) || parseInt(weight, 10) < 0){
             $("#sets-label").text("Please enter a number!");
-            validInputs = false; 
+            validInputs = false;
           }else{
             $("#weight-label").text("");
-            validInputs = true; 
+          
           }
           var reps = $(this).find("input[name=reps]").val();
           if(isNaN(reps) || parseInt(weight, 10) < 0){
             $("#reps-label").text("Please enter a number!");
-            validInputs = false; 
+            validInputs = false;
           }else{
             $("#weight-label").text("");
-            validInputs = true; 
+        
           }
           var rest = $(this).find("input[name=rest]").val();
           if(isNaN(rest) || parseInt(weight, 10) < 0){
             $("#rest-label").text("Please enter a number!");
-            validInputs = false; 
+            validInputs = false;
           }else{
             $("#weight-label").text("");
-            validInputs = true; 
+         
           }
-
-          if(validInputs == false)
-            return false;
 
           thisExercise.name = exerciseName;
           thisExercise.weight = weight;
@@ -135,17 +132,17 @@
           thisExercise.rest = rest;
 
           exercises.push(thisExercise);
-
-          console.log($(this))
         });
-        json.workoutInfo = {};
-        json.workoutInfo.exercises = exercises;
-        console.log(json);
-        $.post("/submitWorkout", {'data': JSON.stringify(json)}, function(){
-          console.log("worked out");
-        })
-      }
-      )
+        if(validInputs === true){
+          json.workoutInfo = {};
+          json.workoutInfo.exercises = exercises;
+          console.log(json);
+          $.post("/submitWorkout", {'data': JSON.stringify(json)}, function(){
+            console.log("worked out");
+
+          });
+        }
+      })
     }
   }
   $(document).ready(function(){
