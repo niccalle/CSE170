@@ -45,25 +45,13 @@
   border-width: thin;
 }
 #whole_list {
-  height:100%;
+  height:75%;
   width: 100%;
   padding: 0 10px;
-  /*padding-left: 15px;
-  padding-right:15px;*/
-}
-/*ul#workouts_list li
-{
-    display: block;
-    margin: 0;
-    padding: 0;
+  display: inline-block;
+  overflow-y: scroll;
 }
 
-ul#workouts_list li a{
-    display: block;
-    border-width: 1px;
-    border-color: #000;
-    border-style: solid;
-}*/
 body {
   height: 100vh;
   background-color: ##f9fbf9;
@@ -90,6 +78,10 @@ body {
     height: 100%;
     padding-top: 15%;
 }
+.test-add{
+    height:100%;
+    padding-top: 30%;
+}
 img{
   width: 50px;
   height: 50px;
@@ -104,6 +96,9 @@ img{
 .navbar{
   height: 5%;
   background-color:#d6e6d4;
+}
+#navbar-add{
+  height: auto;
 }
 button.remove-btn{
   position: absolute;
@@ -205,14 +200,15 @@ label.workout-label{
   border: .5px solid lightgrey;
 }
 .add-workouts {
-  margin-top: 70px;
+  position: fixed;
+  bottom: 20px;
 }
 .delete-exercise-btn{
   margin-left: -30px;
   margin-top: -5px;
 }
 .workout-input{
-/*  margin-left: 5px;*/
+  margin-left: 30px;
   width: 200px;
   height: 30px;
   border: .5px solid lightgrey;
@@ -225,10 +221,6 @@ label.workout-label{
 }
 .workout-name-input{
   line-height: 50px;
-  background-color: #4bbc71;
-  margin-top: 20px;
-  margin-left: 0px;
-  margin-bottom: 15px;
 }
 .soundcloud-search {
   height: 20%;
@@ -237,4 +229,10 @@ label.workout-label{
   margin-left: 20px;
   margin-top: 20px;
   color: black;
+}
+#add-exercise-btn {
+  margin-left: 15px;
+}
+#submit-workout-btn {
+  margin-left: 260px;
 }

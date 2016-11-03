@@ -1,7 +1,7 @@
 <!-- <script src="https://use.fontawesome.com/e10086b709.js"></script> -->
 
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
-<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+<div class="navbar navbar-default navbar-fixed-top" id="navbar-add">
     <div class="container-fluid">
       <div class="navbar-brand navbar-left">
         <a href="/workoutList">
@@ -16,30 +16,15 @@
           Sign Out
         </a>
       </div>
+      <div class="row text-center col-xs-12 workout-name-input">
+        <span>
+          <input class="workout-input" type="text" name="workout" value="" placeholder="Workout name">
+        </span>
+      </div>
     </div>
 </div>
 
-<div class="test">
-  <div class="row text-center col-xs-12 workout-name-input">
-    <span>
-      <input class="workout-input" type="text" name="workout" value="" placeholder="Workout name">
-    </span>
-  </div>
-
-  <div class="row add-workouts">
-    <div class="col-xs-12">
-      <div class="text-center">
-        <button type="button" class="btn btn-info text-left" id="add-exercise-btn">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button>
-        <button type="button" class="btn btn-success text-right" id="submit-workout-btn">
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <br>
-
+<div class="test-add">
   <ul id="whole_list">
     <li class="each-exercise">
       <div class="set-row text-center set-name">
@@ -74,6 +59,17 @@
       </div>
     </li>
   </ul>
+
+  <div class="row add-workouts">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-info" id="add-exercise-btn">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-success" id="submit-workout-btn">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
 
 </div>
 
