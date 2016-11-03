@@ -178,12 +178,20 @@
       "name": "EDM",
       "tracks": [
         {
-          "name": "Funky Goldman",
-          "id": "270890617"
+          "name": "Perdoname",
+          "id": "158475500"
         },
         {
-          "name": "Someday My Prince Will Come",
-          "id": "210883449"
+          "name": "Genghis Khan",
+          "id": "241453869"
+        },
+        {
+          "name": "Weekend",
+          "id": "269225991"
+        },
+        {
+          "name": "Funky Goldman",
+          "id": "270890617"
         }
       ]
     },
@@ -191,38 +199,46 @@
       "name": "Hip Hop",
       "tracks": [
         {
-          "name": "Funky Goldman",
-          "id": "270890617"
+          "name": "Remember the Name",
+          "id": "254457869"
         },
         {
-          "name": "Someday My Prince Will Come",
-          "id": "210883449"
-        }
-      ]
-    },
-    {
-      "name": "Discover Weekly",
-      "tracks": [
-        {
-          "name": "Funky Goldman",
-          "id": "270890617"
+          "name": "Black Friday",
+          "id": "234989333"
         },
         {
-          "name": "Someday My Prince Will Come",
-          "id": "210883449"
+          "name": "Backseat Freestyle",
+          "id": "63540899"
+        },
+        {
+          "name": "Sit Down",
+          "id": "181540795"
         }
+
       ]
     },
     {
       "name": "Rock",
       "tracks": [
         {
-          "name": "Funky Goldman",
-          "id": "270890617"
+          "name": "Paralyzer",
+          "id": "6221233"
         },
         {
-          "name": "Someday My Prince Will Come",
-          "id": "210883449"
+          "name": "You're Gonna Go Far Kid",
+          "id": "208059815"
+        },
+        {
+          "name": "Bleed it Out",
+          "id": "255824588"
+        },
+        {
+          "name": "Numb",
+          "id": "255824765"
+        },
+        {
+          "name": "In the End",
+          "id": "5936480"
         }
       ]
     },

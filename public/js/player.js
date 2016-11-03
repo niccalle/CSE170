@@ -16,6 +16,27 @@ $(document).ready(function(){
   var workoutLength; //How many exercises the workout is long
   var workoutNum = 0;
   var set = 1;
+  var factor = 1;
+  var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+
+  $(document).keydown(function(e) {
+
+    kkeys.push( e.keyCode );
+
+    if ( kkeys.toString().indexOf( konami ) >= 0 ) {
+
+      $(document).unbind('keydown',arguments.callee);
+
+      // do something awesome
+      factor = 10;
+      seconds /= factor;
+      console.log("KONAMI!!!");
+      $(".navbar").css("background-color", "yellow");
+
+    }
+
+  });
+
   /*Get data from the API for this workout and playlist*/
   $.get("/getWorkout/"+$("#workout").text(), function(data){
     workout = data['workout'];
@@ -23,7 +44,7 @@ $(document).ready(function(){
     $.get("/getPlaylist/"+$("#playlist").text(), function(data2){
       playlist = data2['songs'];
       /*Load the song once everything has been retrieved from the API*/
-      workoutLength = workout.workoutInfo.exercises.length;
+      workoutLength = 2;//workout.workoutInfo.exercises.length;
       currExercise = workout.workoutInfo.exercises[workoutNum];
       loadSong(playlist.tracks[0]);
     });
@@ -48,11 +69,19 @@ $(document).ready(function(){
       if(set > parseInt(currExercise.sets)){
         set = 1;
         workoutNum++;
+        if(workoutNum == workoutLength){
+          return endWorkout();
+        }
         currExercise = workout.workoutInfo.exercises[workoutNum];
       }
       clearInterval(startTimer);
       loadSong(playlist.tracks[songNum%playlist.tracks.length]);
     }
+  }
+
+  function endWorkout(){
+    $("#mycanvas").remove();
+    $("<h1>Congratulations!</h1>").appendTo(".canvas");
   }
   function updateText(){
     $("#exercise").text(currExercise.name);
@@ -64,7 +93,8 @@ $(document).ready(function(){
   }
   /*Loads our invisible widget with the next track*/
   function loadSong(track){
-    seconds = 20;
+    seconds = parseInt(currExercise.rest)/factor;
+    console.log(seconds);
     updateText();
     widget.load("https://api.soundcloud.com/tracks/"+track.id);
   }
@@ -74,7 +104,7 @@ $(document).ready(function(){
       // $("#mycanvas").remove();
       // $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
       canvasListener();
-      drawCanvas(20, true);
+      drawCanvas(seconds, true);
       startTimer =  setInterval(updateSeconds, 1000);
       var speech = "Begin set " + set + " of " + currExercise.name + " at "
         + currExercise.weight + "pounds for " + currExercise.reps + "reps";

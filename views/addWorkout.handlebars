@@ -99,45 +99,63 @@
           var thisExercise = {};
           var exerciseName = $(this).find("input[name=exercise]").val();
           var weight = $(this).find("input[name=weight]").val();
-          
-          if(isNaN(weight) || parseInt(weight, 10) < 0){
-            $("#weight-label").text("Please enter a number!");
-            validInputs = false;
-          }else{
-            $("#weight-label").text("");
-          
-          }
-          var set = $(this).find("input[name=sets]").val();
-          if(isNaN(set) || parseInt(weight, 10) < 0){
-            $("#sets-label").text("Please enter a number!");
-            validInputs = false;
-          }else{
-            $("#weight-label").text("");
-          
-          }
-          var reps = $(this).find("input[name=reps]").val();
-          if(isNaN(reps) || parseInt(weight, 10) < 0){
-            $("#reps-label").text("Please enter a number!");
-            validInputs = false;
-          }else{
-            $("#weight-label").text("");
-        
-          }
-          var rest = $(this).find("input[name=rest]").val();
-          if(isNaN(rest) || parseInt(weight, 10) < 0){
-            $("#rest-label").text("Please enter a number!");
-            validInputs = false;
-          }else{
-            $("#weight-label").text("");
-         
-          }
+          var $scope = $(this);
+          ["weight", "sets", "reps", "rest"].forEach(function(element){
+            $input = $scope.find("input[name="+element+"]");
+            var amount = $input.val();
+            thisExercise[element] = amount;
+            if(isNaN(amount) || parseInt(amount, 10) < 0){
+              $input.val("");
+              $input.attr("placeholder","Number only!");
+              $input.css("border-color","red");
+              validInputs = false;
+            }else{
+              $input.attr("placeholder","");
+              $input.css("border-color","");
+
+            }
+          })
+
+          // if(isNaN(weight) || parseInt(weight, 10) < 0){
+          //   $("input[name=weight]").val("");
+          //   $("input[name=weight]").attr("placeholder","Number only!");
+          //   $("input[name=weight]").css("border-color","red");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var set = $(this).find("input[name=sets]").val();
+          // if(isNaN(set) || parseInt(set, 10) < 0){
+          //   $("#sets-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var reps = $(this).find("input[name=reps]").val();
+          // if(isNaN(reps) || parseInt(rest, 10) < 0){
+          //   $("#reps-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var rest = $(this).find("input[name=rest]").val();
+          // if(isNaN(rest) || parseInt(rest, 10) < 0){
+          //   $("#rest-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
 
           thisExercise.name = exerciseName;
-          thisExercise.weight = weight;
-          thisExercise.sets = set;
-          thisExercise.reps = reps;
-          thisExercise.rest = rest;
-
+          // thisExercise.weight = weight;
+          // thisExercise.sets = set;
+          // thisExercise.reps = reps;
+          // thisExercise.rest = rest;
+          //
           exercises.push(thisExercise);
         });
         if(validInputs === true){
