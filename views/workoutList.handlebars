@@ -14,26 +14,8 @@
 <div class="test">
   <ul class="workouts" id="whole_list">
     {{#each workouts}}
-
-        <li class="each_workout" id="workouts_list-{{@index}}">
-          <!-- <div class="container">
-            <div class="row">
-              <div class="col-xs-6 workout_name"><a href="/workoutInfo/{{this}}">{{this}}</a></div>
-              <div class="col-xs-6 remove-btn"><label>Remove</label></div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4">
-                <img src="/assets/shaggy.jpg" class="img-rounded"/>
-              </div>
-              <div class="col-xs-4">
-                <img src="/assets/bears.jpg" class="img-rounded"/>
-              </div>
-              <div class="col-xs-4">
-                <img src="/assets/manuel.jpg" class="img-rounded"/>
-              </div>
-            </div>
-          </div> -->
-          <a href="/workoutInfo/{{this}}"><label class="workout-label">{{this}}</label></a>
+        <li class="each_workout" style="background-image: url('{{this.workoutInfo.image}}');" id="workouts_list-{{@index}}">
+          <a href="/workoutInfo/{{this.name}}"><label class="workout-label">{{this.name}}</label></a>
           <label class="remove-btn">x</label>
       </a>
     {{/each}}

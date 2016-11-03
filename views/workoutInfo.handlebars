@@ -1,10 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>{{name}}</h1>
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+  <div class="navbar navbar-default navbar-fixed-top" id="navbar">
+
+    <div class="container-fluid">
+      <div class="navbar-brand navbar-left">
+        <a href="/workoutList">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-brand navbar-center" style="margin-left: 70px;">
+        {{name}}
+      </div> 
+      <div class="navbar-brand navbar-right">
+        <a href="/">
+          Sign Out
+        </a>
+      </div>  
     </div>
-  </div>
-  <div class="row">
+</div>
+<div class="row" style="margin-top:50px;">
   <div class="col-xs-12">
     <ul class="list-group">
       {{#each workoutInfo.exercises}}

@@ -24,7 +24,7 @@
 
 .each_workout{
     position: relative;
-    background-image: url("/assets/testthumb.jpg");
+    /*background-image: url("/assets/wide-bench.jpg");*/
     background-size: cover;
     background-position: center;
     height: 20%;

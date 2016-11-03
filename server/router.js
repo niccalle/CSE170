@@ -18,9 +18,7 @@ module.exports = function(app){
   //Render the workout list
   app.get("/workoutList", function(req,res){
     //Retrieve just the names of the workouts using helper
-    res.render("workoutList", {
-      "workouts": helper.getNames(json.workouts)
-    })
+    res.render("workoutList", {"workouts": json.workouts});
   });
 
   //Render the workoutInfo page
@@ -62,6 +60,7 @@ module.exports = function(app){
   });
   app.post("/submitWorkout", function(req,res){
     var workout = JSON.parse(req.body.data);
+    helper.getImage(workout);
     json.workouts.push(workout);
     fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
 
