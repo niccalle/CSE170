@@ -1,4 +1,26 @@
-<div class="container">
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-brand navbar-left">
+        Choose your Playlist
+      </div>
+      <div class="navbar-brand navbar-right">
+        <a href="/">
+          Sign Out
+        </a>
+      </div>
+  </div>
+</div>
+
+<div class="test container">
+	<div class="row soundcloud-search">
+		<form>
+			<div class="form-group col-xs-8 text-center">
+		    <input type="text" class="form-control" name="playlist-search" id="playlist-search" placeholder="Playlist Name">
+		  </div>
+      <button type="button" class="btn btn-success text-right" id="playlist-search-btn">Search!</button>
+	  </form>
+	</div>
   <ul>
     {{#each playlists}}
       <a href="/workout/{{../workout}}/{{this}}/ready">
@@ -7,3 +29,34 @@
     {{/each}}
   </ul>
 </div>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.javascript"></script>
+<script type="text/javascript">
+  var ListenerSuite = {
+
+    searchListener: function(){
+      $("#playlist-search-btn").click(function(){
+        var name = $("#playlist-search").val();
+        console.log(name);
+        SC.initialize({
+        	client_id: 'NICS CLIENT ID'
+        });
+
+        // find all sounds of buskers licensed under 'creative commons share alike'
+				SC.get('/tracks', {
+				  q: name,
+				}).then(function(tracks) {
+				  console.log(tracks);
+				});
+      })
+    }
+  }
+  $(document).ready(function(){
+    ListenerSuite.searchListener();
+    mockhide = function(){
+      console.log("hide");
+      $(this).hide();
+
+    };
+  })
+</script>

@@ -12,23 +12,25 @@
     </div>
 </div>
 
-<div class="row text-center col-xs-12 workout-name-input">
-  <span>
-    <input class="workout-input" type="text" name="workout" value="" placeholder="Workout name">
-  </span>
-</div>
-
-<div class="row add-workouts">
-  <div class="col-xs-12">
-    <div class="text-center">
-      <button type="button" class="btn btn-info text-left" id="add-exercise-btn">Add a new exercise</button>
-      <button type="button" class="btn btn-success text-right" id="submit-workout-btn">Submit!</button>
-    </div>
-    <div class="text-right"></div>
-  </div>
-</div>
-
 <div class="test">
+  <div class="row text-center col-xs-12 workout-name-input">
+    <span>
+      <input class="workout-input" type="text" name="workout" value="" placeholder="Workout name">
+    </span>
+  </div>
+
+  <div class="row add-workouts">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <button type="button" class="btn btn-info text-left" id="add-exercise-btn">Add a new exercise</button>
+        <a href="/workoutList">
+          <button type="button" class="btn btn-success text-right" id="submit-workout-btn">Submit!</button>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
+
   <ul id="whole_list">
     <li class="each-exercise">
       <div class="set-row text-center set-name">
@@ -55,7 +57,10 @@
       </div>
     </li>
   </ul>
+
 </div>
+
+
 
 <script type="text/javascript">
   var ListenerSuite = {
