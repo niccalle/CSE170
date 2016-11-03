@@ -1,12 +1,18 @@
 <div class="container">
-  <div class="col-xs-12">
-    <h1>{{name}}</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{name}}</h1>
+    </div>
   </div>
-  <ul>
-    {{#each workoutInfo.exercises}}
-    <li>{{this.name}}: {{this.sets}}x{{this.reps}} {{this.weight}}</li>
-    {{/each}}
-  </ul>
+  <div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      {{#each workoutInfo.exercises}}
+      <li class="list-group-item">{{this.name}}: {{this.sets}}x{{this.reps}} {{this.weight}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
   <div class="col-xs-4">
     <a href="/workout/{{name}}/playlist">
       <button id="singlebutton" name="singlebutton" class="btn btn-primary">Choose a Playlist!</button>
