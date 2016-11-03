@@ -11,3 +11,8 @@ module.exports.findHelper = function(param){
     return element.name == param;
   }
 }
+
+module.exports.getImage = function(workout){
+  var index = Math.floor((Math.random()*9)+1);
+  workout.workoutInfo.image = "/assets/background"+index+".jpg";
+}
