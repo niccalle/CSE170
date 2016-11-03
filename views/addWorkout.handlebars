@@ -1,11 +1,11 @@
-<script src="https://use.fontawesome.com/e10086b709.js"></script>
+<!-- <script src="https://use.fontawesome.com/e10086b709.js"></script> -->
 
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
       <div class="navbar-brand navbar-left">
-      <a href="/workoutList">
-        Back 
+        <a href="/workoutList">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
         </a>
       </div>
       <div class="navbar-brand navbar-left" style="margin-left: 40px;">
@@ -29,8 +29,12 @@
   <div class="row add-workouts">
     <div class="col-xs-12">
       <div class="text-center">
-        <button type="button" class="btn btn-info text-left" id="add-exercise-btn">+</button>
-        <button type="button" class="btn btn-success text-right" id="submit-workout-btn">Submit!</button>
+        <button type="button" class="btn btn-info text-left" id="add-exercise-btn">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-success text-right" id="submit-workout-btn">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </div>
@@ -40,7 +44,9 @@
     <li class="each-exercise">
       <div class="set-row text-center set-name">
         <span class="delete">
-          <button type="button" class="delete-exercise-btn" id="remove-btn"><img src="/assets/delete.png"></button>
+          <button type="button" class="delete-exercise-btn" id="remove-btn">
+            <span class="glyphicon glyphicon-remove remove-btn" aria-hidden="true"></span>
+          </button>
         </span>
 
         <span class="set-input">

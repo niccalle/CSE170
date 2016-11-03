@@ -233,3 +233,8 @@ label.workout-label{
 .soundcloud-search {
   height: 20%;
 }
+.remove-btn {
+  margin-left: 20px;
+  margin-top: 20px;
+  color: black;
+}
