@@ -191,6 +191,14 @@ label.workout-label{
   border: .5px solid lightgrey;
   border-radius: 4px;
 }
+
+.exercise-input-err{
+  margin-top:15px;
+  margin-left:130px;
+  width: 80px;
+  border: .50x solid red;
+  border-radius: 4px;
+}
 .each-exercise {
   margin-bottom: 15px;
   padding-bottom: 5px;

@@ -35,21 +35,27 @@
         <span class="delete">
           <button type="button" class="delete-exercise-btn" id="remove-btn"><img src="/assets/delete.png"></button>
         </span>
+
         <span class="set-input">
-          <input class="set-name-input" type="text" name="exercise" value="" placeholder="Exercise name">
+
+          <input class="set-name-input" type="text" name="exercise" value="" placeholder="Exercise name" >
         </span>
       </div>
       <div class="set-row">
+        <label id="weight-label"></label>
         <input class="exercise-input" type="text" name="weight" value="" placeholder = "Weight">
         lb
       </div>
       <div class="set-row">
+        <label id="sets-label"></label>
         <input class="exercise-input" type="text" name="sets" value="" style="margin-left: 30px;" placeholder="# of ">
         sets
+        <label id="reps-label"></label>
         <input class="exercise-input" type="text" name="reps" value="" style="margin-left: 70px;" placeholder="# of ">
         reps
       </div>
       <div class="set-row">
+        <label id="rest-label"></label>
         <input class="exercise-input" type="text" name="rest" value="" placeholder="Rest">
         secs
       </div>
@@ -80,9 +86,43 @@
           var thisExercise = {};
           var exerciseName = $(this).find("input[name=exercise]").val();
           var weight = $(this).find("input[name=weight]").val();
+          var validInputs = true; 
+          if(isNaN(weight) || parseInt(weight, 10) < 0){
+            $("#weight-label").text("Please enter a number!");
+            validInputs = false; 
+          }else{
+            $("#weight-label").text("");
+            validInputs = true; 
+
+          }
           var set = $(this).find("input[name=sets]").val();
+          if(isNaN(set) || parseInt(weight, 10) < 0){
+            $("#sets-label").text("Please enter a number!");
+            validInputs = false; 
+          }else{
+            $("#weight-label").text("");
+            validInputs = true; 
+          }
           var reps = $(this).find("input[name=reps]").val();
+          if(isNaN(reps) || parseInt(weight, 10) < 0){
+            $("#reps-label").text("Please enter a number!");
+            validInputs = false; 
+          }else{
+            $("#weight-label").text("");
+            validInputs = true; 
+          }
           var rest = $(this).find("input[name=rest]").val();
+          if(isNaN(rest) || parseInt(weight, 10) < 0){
+            $("#rest-label").text("Please enter a number!");
+            validInputs = false; 
+          }else{
+            $("#weight-label").text("");
+            validInputs = true; 
+          }
+
+          if(validInputs == false)
+            return false;
+
           thisExercise.name = exerciseName;
           thisExercise.weight = weight;
           thisExercise.sets = set;
