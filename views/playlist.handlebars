@@ -1,6 +1,11 @@
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
+    	<div class="navbar-brand navbar-left">
+        <a href="/workoutInfo/{{workout}}/">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+      </div>
       <div class="navbar-brand navbar-left">
         Choose your Playlist
       </div>
@@ -21,10 +26,12 @@
       <button type="button" class="btn btn-success text-right" id="playlist-search-btn">Search!</button>
 	  </form>
 	</div>
-  <ul>
+<div class="row" style="margin-bottom: 60px;">
+  <div class="col-xs-12">
+  <ul class="list-group">
     {{#each playlists}}
       <a href="/workout/{{../workout}}/{{this}}/ready">
-        <li> <h2>{{this}}</h2> </li>
+        <li class="list-group-item"> <h3>{{this}}</h3> </li>
       </a>
     {{/each}}
   </ul>
