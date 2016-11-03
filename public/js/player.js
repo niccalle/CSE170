@@ -22,7 +22,6 @@ $(document).ready(function(){
   $(document).keydown(function(e) {
 
     kkeys.push( e.keyCode );
-
     if ( kkeys.toString().indexOf( konami ) >= 0 ) {
 
       $(document).unbind('keydown',arguments.callee);
