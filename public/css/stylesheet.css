@@ -87,8 +87,8 @@ body {
   height: 100%;
 }
 .test{
-    height: 80%;
-    padding-top: 5%;
+    height: 100%;
+    padding-top: 15%;
 }
 img{
   width: 50px;
@@ -229,4 +229,7 @@ label.workout-label{
   margin-top: 20px;
   margin-left: 0px;
   margin-bottom: 15px;
+}
+.soundcloud-search {
+  height: 20%;
 }
