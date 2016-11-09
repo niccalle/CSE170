@@ -65,4 +65,10 @@ module.exports = function(app){
     fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
 
   })
+
+  //Render the workout list
+  app.get("/workoutCalendar", function(req,res){
+    //Retrieve just the names of the workouts using helper
+    res.render("workoutCalendar", {"workouts": json.workoutsCompleted});
+  });
 }
