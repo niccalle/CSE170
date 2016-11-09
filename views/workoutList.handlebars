@@ -11,15 +11,8 @@
       </div>
     </div>
 </div>
+
 <div class="test">
-  <ul class="workouts" id="whole_list">
-    {{#each workouts}}
-        <li class="each_workout" style="background-image: url('{{this.workoutInfo.image}}');" id="workouts_list-{{@index}}">
-          <a href="/workoutInfo/{{this.name}}"><label class="workout-label">{{this.name}}</label></a>
-          <label class="remove-btn">x</label>
-      </a>
-    {{/each}}
-  </ul>
 
   <div class="row">
     <div class="col-xs-4">
@@ -30,6 +23,15 @@
       </div>
     </div>
   </div>
+
+  <ul class="workouts" id="whole_list">
+    {{#each workouts}}
+        <li class="each_workout" style="background-image: url('{{this.workoutInfo.image}}');" id="workouts_list-{{@index}}">
+          <a href="/workoutInfo/{{this.name}}"><label class="workout-label">{{this.name}}</label></a>
+          <label class="remove-btn">x</label>
+      </a>
+    {{/each}}
+  </ul>
 </div>
 
 <script type="text/javascript">
