@@ -200,8 +200,12 @@ label.workout-label{
   border: .5px solid lightgrey;
 }
 .add-workouts {
+  /*
   position: fixed;
   bottom: 20px;
+  */
+  display: inline-block;
+  margin-top: 120px;
 }
 .delete-exercise-btn{
   margin-left: -30px;
@@ -231,10 +235,12 @@ label.workout-label{
   color: black;
 }
 #add-exercise-btn {
-  margin-left: 15px;
+  margin-left: 10px;
 }
 #submit-workout-btn {
-  margin-left: 150px;
+  /* margin-left: 150px;
+  */
+  margin-left: 180px;
 }
 .workout_info {
   width: 100%;
