@@ -18,6 +18,15 @@ $(document).ready(function(){
   var set = 1;
   var factor = 1;
   var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+  var completedWorkout = {
+    "name": "",
+    "id": "",
+    "workoutInfo":{
+      "image": "",
+      "exercises": [],
+      "timeCompleted":0
+    }
+  };
 
   $(document).keydown(function(e) {
 
@@ -39,12 +48,16 @@ $(document).ready(function(){
   /*Get data from the API for this workout and playlist*/
   $.get("/getWorkout/"+$("#workout").text(), function(data){
     workout = data['workout'];
+    initializeCompletedWorkout();
 
     $.get("/getPlaylist/"+$("#playlist").text(), function(data2){
       playlist = data2['songs'];
       /*Load the song once everything has been retrieved from the API*/
-      workoutLength = 2;//workout.workoutInfo.exercises.length;
+      workout.workoutInfo.exercises.length;
       currExercise = workout.workoutInfo.exercises[workoutNum];
+
+      /*Add the current exercise and initialize the sets to be 0*/
+      addWorkout();
       loadSong(playlist.tracks[0]);
     });
   });
@@ -64,6 +77,8 @@ $(document).ready(function(){
     if(seconds == 0){
       songNum++;
       set++;
+      /*Increment the sets completed*/
+      completedWorkout.workoutInfo.exercises[workoutNum].sets += 1
       /*If we should move onto the next exercise*/
       if(set > parseInt(currExercise.sets)){
         set = 1;
@@ -72,7 +87,10 @@ $(document).ready(function(){
           return endWorkout();
         }
         currExercise = workout.workoutInfo.exercises[workoutNum];
+        addWorkout();
       }
+      console.log(completedWorkout);
+      saveProgress();
       clearInterval(startTimer);
       loadSong(playlist.tracks[songNum%playlist.tracks.length]);
     }
@@ -97,6 +115,47 @@ $(document).ready(function(){
     updateText();
     widget.load("https://api.soundcloud.com/tracks/"+track.id);
   }
+  /*Make a unique ID for today's workout*/
+  function makeid()
+  {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for( var i=0; i < 5; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+  }
+
+  /*
+    PREREQUISITE: This function is called after currExercise has been updated
+  */
+  function addWorkout(){
+    var n = {
+      "name": currExercise.name,
+      "weight": currExercise.weight,
+      "sets": 0,
+      "reps": currExercise.reps,
+      "rest": currExercise.rest
+    }
+    completedWorkout.workoutInfo.exercises.push(n);
+  }
+  /*Initialize our completed workout with a random id and other fields*/
+  function initializeCompletedWorkout(){
+    var date = new Date();
+    completedWorkout.name = workout.name;
+    completedWorkout.id = makeid();
+    completedWorkout.workoutInfo.image = workout.workoutInfo.image;
+    completedWorkout.workoutInfo.timeCompleted = date.toDateString();
+  }
+
+  function saveProgress(){
+    $.post("/saveProgress", {"data": JSON.stringify(completedWorkout)},
+            function(){
+              console.log("Saved progress");
+            })
+  }
+
   widget.bind(SC.Widget.Events.READY, function() {
     drawCanvas(20, false);
     widget.bind(SC.Widget.Events.PLAY, function(){

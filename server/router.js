@@ -1,6 +1,6 @@
 var fs = require('fs');
 //Open up our fake database
-var json = JSON.parse(fs.readFileSync('./server/backup.json', 'utf8'));
+var json = JSON.parse(fs.readFileSync('./server/data.json', 'utf8'));
 var helper = require('../helpers/dataHelper');
 
 module.exports = function(app){
@@ -64,5 +64,19 @@ module.exports = function(app){
     json.workouts.push(workout);
     fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
 
+  })
+  app.post("/saveProgress", function(req,res){
+    var progress = JSON.parse(req.body.data);
+    var found = false;
+    for(var i = 0; i < json.workoutsCompleted.length; i++){
+      if(json.workoutsCompleted[i].id == progress.id){
+        json.workoutsCompleted[i] = progress;
+        found = true;
+      }
+    }
+    if(!found){
+      json.workoutsCompleted.push(progress);
+    }
+    fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
   })
 }
