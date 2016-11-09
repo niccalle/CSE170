@@ -45,6 +45,7 @@
   border-width: thin;
 }
 #whole_list {
+  margin-top:120px;
   height:88%;
   width: 100%;
   padding: 0 10px;
@@ -195,7 +196,6 @@ label.workout-label{
   border-radius: 4px;
 }
 .each-exercise {
-  margin-top: 120px;
   margin-bottom: 15px;
   padding-bottom: 5px;
   border: .5px solid lightgrey;
@@ -235,7 +235,7 @@ label.workout-label{
   margin-left: 15px;
 }
 #submit-workout-btn {
-  margin-left: 260px;
+  margin-left: 150px;
 }
 .workout_info {
   width: 100%;
