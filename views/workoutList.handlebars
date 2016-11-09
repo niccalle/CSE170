@@ -38,7 +38,10 @@
   var ListenerSuite = {
     removeListener: function(){
       $('.remove-btn').click(function(){
-        $(this).parent().remove();
+        var result = confirm("Would you like to delete this workout?");
+        if (result) {
+          $(this).parent().remove();
+        }
       });
     }
   }

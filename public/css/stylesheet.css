@@ -132,7 +132,7 @@ label.remove-btn{
   position: absolute;
   color: lightgrey;
   font-weight: lighter;
-  bottom: 10px;
+/*  bottom: 10px;*/
   right: 10px;
 }
 
@@ -231,7 +231,7 @@ label.workout-label{
 }
 .remove-btn {
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: -20px;
   color: black;
 }
 #add-exercise-btn {
@@ -250,12 +250,23 @@ label.workout-label{
   padding-left: 0px;
   overflow-y: scroll;
 }
+.workout_package {
+  border: 0.5px solid grey;
+}
 .workout_name {
   margin-top: 5px;
   text-align: center;
   font-weight: bold;
 }
 .workout_list {
-    overflow-y: scroll;
-    height: 100px;
+  overflow-y: scroll;
+  height: 100px;
+
+}
+.workout_list::-webkit-scrollbar {
+    width: 6px;
+}
+.workout_list::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
 }
