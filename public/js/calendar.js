@@ -1007,11 +1007,11 @@ if(!String.prototype.formatNum) {
 
 		//$('*[data-toggle="tooltip"]').tooltip({container: this.options.tooltip_container});
 
-		$('*[data-cal-date]').click(function() {
-			var view = $(this).data('cal-view');
-			self.options.day = $(this).data('cal-date');
-			self.view(view);
-		});
+		// $('*[data-cal-date]').click(function() {
+		// 	var view = $(this).data('cal-view');
+		// 	self.options.day = $(this).data('cal-date');
+		// 	self.view(view);
+		// });
 		$('.cal-cell').dblclick(function() {
 			var view = $('[data-cal-date]', this).data('cal-view');
 			self.options.day = $('[data-cal-date]', this).data('cal-date');

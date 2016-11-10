@@ -45,6 +45,25 @@
 </div>
 
 <script type="text/javascript">
+function getRandomColor() {
+  var colors = ["event-warning", "event-success", "event-inverse", "event-info", "event-important", "event-special", ""];
+  var index = getRandomInt(0, colors.length);
+  return colors[index];
+}
+
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getTime(str) {
+  var d = new Date(str);
+  return d.getTime();
+}
+
 $(document).ready(function(){
     var prevWorkouts;
     var calendar;
@@ -58,68 +77,35 @@ $(document).ready(function(){
       {
         tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
           events_source: function () { return [ {
-            "id": 293,
             "title": "This is warning class event with very long title to check how it fits to evet in day view",
-            "url": "/workoutInfo/Leg%20Day",
-            "class": "event-warning",
+            "class": getRandomColor(),
             "start": 1478764800000, // Milliseconds
-            "end": 1478764900000 // Milliseconds
         },
         {
-            "id": 234,
             "title": "Today is the day v2",
-            "url": "",
-            "class": "event-success",
+            "class": getRandomColor(),
             "start": 1478765800000, // Milliseconds
-            "end": 1478784900000 // Milliseconds
-        },
-        {
-            "id": "294",
-            "title": "This is information class ",
-            "url": "http://www.example.com/",
-            "class": "event-info",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "297",
-            "title": "This is success event",
-            "url": "http://www.example.com/",
-            "class": "event-success",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "54",
-            "title": "This is simple event",
-            "url": "http://www.example.com/",
-            "class": "",
-            "start": 1478765800000,
-            "end":   1478765800000
         },
         {
             "id": "532",
             "title": "This is inverse event",
-            "url": "",
-            "class": "event-inverse",
-            "start": 1478765800000,
-            "end":   1478765800000
+            "class": getRandomColor(),
+            "start": 1479369600000,
+            "end":   1479369600000
         },
         {
             "id": "548",
             "title": "This is special event",
-            "url": "",
-            "class": "event-important",
-            "start": 1478765800000,
-            "end":   1478765800000
+            "class": getRandomColor(),
+            "start": 1478678400000,
+            "end":   1478678400000
         },
         {
             "id": "295",
             "title": "Event 3",
-            "url": "",
-            "class": "event-important",
-            "start": 1478765800000,
-            "end":   1478765800000
+            "class": getRandomColor(),
+            "start": 1478678400000,
+            "end":   1478678400000
         }
         ]; }
       });
