@@ -1,0 +1,202 @@
+<!-- <script src="https://use.fontawesome.com/e10086b709.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<div class="navbar navbar-default navbar-fixed-top" id="navbar-add">
+    <div class="container-fluid">
+      <div class="navbar-brand navbar-left">
+        <a href="/workoutList">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-brand navbar-left" style="margin-left: 40px;">
+        Workouts
+      </div>
+      <div class="navbar-brand navbar-right" style="margin-right: -10px;">
+        <a href="/">
+          Sign Out
+        </a>
+      </div>
+      <div class="row text-center col-xs-12 workout-name-input">
+        <div>
+          <input class="workout-input" type="text" name="workout" value="{{name}}" placeholder="Workout name">
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row add-workouts">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-info" id="add-exercise-btn">
+      Add exercise
+    </button>
+    <button type="button" class="btn btn-success" id="submit-workout-btn" >
+      Submit
+    </button>
+  </div>
+</div>
+
+<ul id="whole_list">
+  {{#each workoutInfo.exercises}}
+    <li class="each-exercise">
+      <div class="set-row text-center set-name">
+        <span class="delete">
+          <button type="button" class="delete-exercise-btn" id="remove-btn">
+            <span class="glyphicon glyphicon-remove remove-btn" aria-hidden="true"></span>
+          </button>
+        </span>
+
+        <div class="set-input">
+          <input class="set-name-input" type="text" name="exercise" value="{{this.name}}" placeholder="Exercise name" value="{{this.name}}">
+        </div>
+      </div>
+      <div class="set-row">
+        <label id="weight-label"></label>
+        <input class="exercise-input" type="text" name="weight" value="{{this.weight}}" placeholder = "Weight">
+        lb
+      </div>
+      <div class="set-row">
+        <label id="sets-label"></label>
+        <input class="exercise-input" type="text" name="sets" value="{{this.sets}}" style="margin-left: 30px;" placeholder="# of ">
+        sets
+        <label id="reps-label"></label>
+        <input class="exercise-input" type="text" name="reps" value="{{this.reps}}" style="margin-left: 70px;" placeholder="# of ">
+        reps
+      </div>
+      <div class="set-row">
+        <label id="rest-label"></label>
+        <input class="exercise-input" type="text" name="rest" value="{{this.rest}}" placeholder="Rest">
+        secs
+      </div>
+    </li>
+  {{/each}}
+</ul>
+
+<!--   <div class="row add-workouts">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-info" id="add-exercise-btn">
+        Add exercise
+      </button>
+      <button type="button" class="btn btn-success" id="submit-workout-btn" >
+        Submit
+      </button>
+    </div>
+  </div> -->
+
+
+
+
+
+<script type="text/javascript">
+  var ListenerSuite = {
+    removeListener: function(){
+      $('.delete-exercise-btn').click(function(){
+        var $test = $(".each-exercise");
+        if ($test.length !== 1) {
+          $(this).parent().parent().parent().remove();
+        }
+      });
+    },
+
+    submitListener: function(){
+      $("#submit-workout-btn").click(function(){
+        var json = {};
+        json.name = $(".workout-input").val();
+        var $exercises = $("#whole_list").children();
+        var exercises = [];
+        var validInputs = true;
+        $(".each-exercise").each(function(i){
+          /*TODO: Fill the exercises list with objects that resemble the data.json exercises*/
+
+          var thisExercise = {};
+          var exerciseName = $(this).find("input[name=exercise]").val();
+          var weight = $(this).find("input[name=weight]").val();
+          var $scope = $(this);
+          ["weight", "sets", "reps", "rest"].forEach(function(element){
+            $input = $scope.find("input[name="+element+"]");
+            var amount = $input.val();
+            thisExercise[element] = amount;
+            if(isNaN(amount) || parseInt(amount, 10) < 0){
+              $input.val("");
+              $input.attr("placeholder","Number only!");
+              $input.css("border-color","red");
+              validInputs = false;
+            }else{
+              $input.attr("placeholder","");
+              $input.css("border-color","");
+
+            }
+          })
+
+          // if(isNaN(weight) || parseInt(weight, 10) < 0){
+          //   $("input[name=weight]").val("");
+          //   $("input[name=weight]").attr("placeholder","Number only!");
+          //   $("input[name=weight]").css("border-color","red");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var set = $(this).find("input[name=sets]").val();
+          // if(isNaN(set) || parseInt(set, 10) < 0){
+          //   $("#sets-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var reps = $(this).find("input[name=reps]").val();
+          // if(isNaN(reps) || parseInt(rest, 10) < 0){
+          //   $("#reps-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+          // var rest = $(this).find("input[name=rest]").val();
+          // if(isNaN(rest) || parseInt(rest, 10) < 0){
+          //   $("#rest-label").text("Please enter a number!");
+          //   validInputs = false;
+          // }else{
+          //   $("#weight-label").text("");
+          //
+          // }
+
+          thisExercise.name = exerciseName;
+          // thisExercise.weight = weight;
+          // thisExercise.sets = set;
+          // thisExercise.reps = reps;
+          // thisExercise.rest = rest;
+          //
+          exercises.push(thisExercise);
+        });
+        if(validInputs === true){
+          json.workoutInfo = {};
+          json.workoutInfo.exercises = exercises;
+          console.log(json);
+          $.post("/submitWorkout", {'data': JSON.stringify(json)}, function(){
+            console.log("worked out");
+            location.href='/workoutList';
+          });
+        }
+      })
+    }
+  }
+  $(document).ready(function(){
+    ListenerSuite.removeListener();
+    ListenerSuite.submitListener();
+    mockhide = function(){
+      console.log("hide");
+      $(this).hide();
+
+    };
+    $("#add-exercise-btn").click(function(){
+      // if ($("exercise_list-1").length != 0) {
+        var $test = $(".each-exercise");
+        var $clone = ($test).first().clone();
+        $clone.find("input:text").val("");
+        $clone.appendTo("#whole_list");
+        ListenerSuite.removeListener();
+      //}
+    })
+  })
+</script>
