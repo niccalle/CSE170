@@ -1,4 +1,9 @@
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<link rel="stylesheet" type="text/css" href="/css/calendar.css" >
+<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/js/underscore.js"></script>
+<script type="text/javascript" src="/js/calendar.js"></script>
+
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
       <div class="navbar-brand navbar-left">
@@ -16,7 +21,8 @@
       </div>
     </div>
 </div>
-<div class="test">
+<div id="calendar"></div>
+<div class="test" style="padding-top: 0px;">
   <ul class="workout_info" id="workout_list">
     {{#each workouts}}
     <div class="workout_package">
@@ -37,3 +43,13 @@
   </ul>
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+      var calendar = $("#calendar").calendar(
+        {
+            tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
+            events_source: function () { return []; }
+        });
+})
+</script>
