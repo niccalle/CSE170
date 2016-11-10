@@ -268,5 +268,16 @@
         }
       ]
     }
+  ],
+  "workoutsCompleted": [],
+  "accounts": [
+    {
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "username": "test",
+      "password": "password"
+    }
   ]
 }

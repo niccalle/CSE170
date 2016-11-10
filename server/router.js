@@ -10,6 +10,17 @@ module.exports = function(app){
     res.render("home");
   });
 
+  app.post("/login", function(req,res){
+    var login = JSON.parse(req.body.data);
+    for(var i = 0; i < json.accounts.length; i++){
+      var account = json.accounts[i];
+      if(login.username == account.username
+        && login.password == account.password){
+          res.send("success");
+        }
+    }
+    res.send("failure");
+  })
   //Render the workout page
   app.get("/chooseWorkout", function(req,res){
     res.render("chooseWorkout");
