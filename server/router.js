@@ -115,4 +115,8 @@ module.exports = function(app){
     var findFunc = helper.findHelper(req.params.workout);
     res.render("editWorkout", json.workouts.find(findFunc));
   })
+
+  app.get("/workoutsCompleted", function(req, res) {
+    res.send({"workoutsCompleted": json.workoutsCompleted});
+  })
 }

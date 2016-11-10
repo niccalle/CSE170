@@ -1184,7 +1184,7 @@ if(!String.prototype.formatNum) {
 				if($(this).children('[data-cal-date]').text() == self.activecell) {
 					return;
 				}
-				//showEventsList(event, downbox, slider, self);
+				showEventsList(event, downbox, slider, self);
 			})
 		;
 

@@ -280,3 +280,6 @@ label.workout-label{
   overflow-y: scroll;
   margin-top: 50px;
 }
+#cal-slide-content a.event-item {
+  color: black;
+}

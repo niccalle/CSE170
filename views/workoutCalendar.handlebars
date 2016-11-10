@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
 <link rel="stylesheet" type="text/css" href="/css/calendar.css" >
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
 <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/js/underscore.js"></script>
 <script type="text/javascript" src="/js/calendar.js"></script>
@@ -46,10 +46,84 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-      var calendar = $("#calendar").calendar(
+    var prevWorkouts;
+    var calendar;
+    $.get("/workoutsCompleted").done(function(data){
+      prevWorkouts = data;
+
+
+
+
+      calendar = $("#calendar").calendar(
+      {
+        tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
+          events_source: function () { return [ {
+            "id": 293,
+            "title": "This is warning class event with very long title to check how it fits to evet in day view",
+            "url": "/workoutInfo/Leg%20Day",
+            "class": "event-warning",
+            "start": 1478764800000, // Milliseconds
+            "end": 1478764900000 // Milliseconds
+        },
         {
-            tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
-            events_source: function () { return []; }
-        });
+            "id": 234,
+            "title": "Today is the day v2",
+            "url": "",
+            "class": "event-success",
+            "start": 1478765800000, // Milliseconds
+            "end": 1478784900000 // Milliseconds
+        },
+        {
+            "id": "294",
+            "title": "This is information class ",
+            "url": "http://www.example.com/",
+            "class": "event-info",
+            "start": 1478765800000,
+            "end":   1478765800000
+        },
+        {
+            "id": "297",
+            "title": "This is success event",
+            "url": "http://www.example.com/",
+            "class": "event-success",
+            "start": 1478765800000,
+            "end":   1478765800000
+        },
+        {
+            "id": "54",
+            "title": "This is simple event",
+            "url": "http://www.example.com/",
+            "class": "",
+            "start": 1478765800000,
+            "end":   1478765800000
+        },
+        {
+            "id": "532",
+            "title": "This is inverse event",
+            "url": "",
+            "class": "event-inverse",
+            "start": 1478765800000,
+            "end":   1478765800000
+        },
+        {
+            "id": "548",
+            "title": "This is special event",
+            "url": "",
+            "class": "event-important",
+            "start": 1478765800000,
+            "end":   1478765800000
+        },
+        {
+            "id": "295",
+            "title": "Event 3",
+            "url": "",
+            "class": "event-important",
+            "start": 1478765800000,
+            "end":   1478765800000
+        }
+        ]; }
+      });
+    });
+
 })
 </script>
