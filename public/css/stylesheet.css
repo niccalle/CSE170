@@ -270,3 +270,8 @@ label.workout-label{
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
 }
+.glyphicon-play{
+  font-size: 40vh;
+  width: 100%;
+  text-align: center;
+}

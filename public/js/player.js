@@ -17,6 +17,7 @@ $(document).ready(function(){
   var workoutNum = 0;
   var set = 1;
   var factor = 1;
+  var playing = false;
   var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
   var completedWorkout = {
     "name": "",
@@ -64,18 +65,24 @@ $(document).ready(function(){
   });
   /*When we click on the clock, play the soundcloud song*/
   function canvasListener(){
-    $("#mycanvas").click(function(){
-      $("#mycanvas").remove();
-      $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
-      widget.play();
+    $(".canvas").click(function(){
+      if(!playing){
+        $("#mycanvas").remove();
+        $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
+        widget.play();
+        playing = true;
+      }
+
     });
   }
   canvasListener();
   /*Updates the clock and if the seconds hits 0, load the next song*/
   function updateSeconds(){
     seconds--;
+    console.log(seconds);
     // $("#timer").text(seconds);
     if(seconds == 0){
+      clearInterval(startTimer);
       songNum++;
       set++;
       /*Increment the sets completed*/
@@ -92,7 +99,7 @@ $(document).ready(function(){
       }
       console.log(completedWorkout);
       saveProgress();
-      clearInterval(startTimer);
+
       loadSong(playlist.tracks[songNum%playlist.tracks.length]);
     }
   }
@@ -112,9 +119,11 @@ $(document).ready(function(){
   /*Loads our invisible widget with the next track*/
   function loadSong(track){
     seconds = parseInt(currExercise.rest)/factor;
-    console.log(seconds);
     updateText();
+    $("#mycanvas").remove();
+    $("<span class=\"glyphicon glyphicon-play\" id=\"mycanvas\"></span>").appendTo(".canvas");
     widget.load("https://api.soundcloud.com/tracks/"+track.id);
+    playing = false;
   }
   /*Make a unique ID for today's workout*/
   function makeid()
@@ -158,7 +167,8 @@ $(document).ready(function(){
   }
 
   widget.bind(SC.Widget.Events.READY, function() {
-    drawCanvas(20, false);
+    // drawCanvas(20, false);
+    console.log("READY!");
     widget.bind(SC.Widget.Events.PLAY, function(){
       // $("#mycanvas").remove();
       // $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
