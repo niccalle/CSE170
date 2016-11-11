@@ -22,108 +22,102 @@
     </div>
 </div>
 <div id="calendar"></div>
-<div class="test" style="padding-top: 0px;">
-  <ul class="workout_info" id="workout_list">
-    {{#each workouts}}
-    <div class="workout_package">
-      <div class="workout_name">{{this.name}}</div>
-      <div class="workout_list">
-        <ul>
-          {{#each this.workoutInfo.exercises}}
-              {{this.name}}
-              <ul>
-                <li>{{this.sets}} sets of {{this.reps}} X {{this.weight}} lb</li>
-  <!--               <li>{{this.rest}} secs rest</li> -->
-              </ul>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-    {{/each}}
-  </ul>
 
+<div class="modal fade" id="events-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Event</h3>
+            </div>
+            <div class="modal-body" style="height: 400px">
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="modal-link" class="btn">Go to Workout</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
+function getRandomColor() {
+  var colors = ["event-warning", "event-success", "event-inverse", "event-info", "event-important", "event-special", ""];
+  var index = getRandomInt(0, colors.length);
+  return colors[index];
+}
+
+// Returns a random integer between min (included) and max (excluded)
+// Using Math.round() will give you a non-uniform distribution!
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getTime(str) {
+  var d = new Date(str);
+  return d.getTime();
+}
+
+function getFormattedPrevWorkouts(jsonWkts){
+
+  var hash = {};
+
+  for(var i = 0; i < jsonWkts.workoutsCompleted.length; i++ ){
+    var workout = jsonWkts.workoutsCompleted[i];
+    var workoutDate = workout.workoutInfo.timeCompleted;
+    if(!hash.hasOwnProperty(workoutDate)){
+      hash[workoutDate] = [];
+    }
+    workout.workoutInfo.exercises.unshift(workout.name);
+    hash[workoutDate].push(createEvent(workout.workoutInfo.exercises, workoutDate));
+  }
+
+  return hash;
+}
+
+function createEvent(workoutArray, date){
+  var name = workoutArray[0];
+  var title = name;
+  var res = {};
+  var url = title.split(' ').join('%20');
+  res["title"] = title;
+  // for (var i = 1; i < workoutArray.length; i++) {
+  //   var obj = workoutArray[i];
+  //   var str = "";
+  //   str += "\n" + obj.name + "- " + obj.sets + " sets of " + obj.reps + " reps X " + obj.weight + " lb\n";
+  //   res["title"] += str;
+  // }
+  res["class"] = getRandomColor();
+  res["start"] = getTime(date);
+  res["id"] = getRandomInt(100,900);
+  res["url"] = '/workoutInfo/' + url;
+  return res;
+}
+
 $(document).ready(function(){
     var prevWorkouts;
     var calendar;
     $.get("/workoutsCompleted").done(function(data){
       prevWorkouts = data;
-
-
-
+      var fmtWrkts = getFormattedPrevWorkouts(prevWorkouts);
+      var arr = [];
+      for(var i in fmtWrkts){
+        var temp = fmtWrkts[i];
+        for (var j = 0; j < temp.length; j++) {
+          arr.push(temp[j]);
+        }
+      }
 
       calendar = $("#calendar").calendar(
       {
         tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
-          events_source: function () { return [ {
-            "id": 293,
-            "title": "This is warning class event with very long title to check how it fits to evet in day view",
-            "url": "/workoutInfo/Leg%20Day",
-            "class": "event-warning",
-            "start": 1478764800000, // Milliseconds
-            "end": 1478764900000 // Milliseconds
-        },
-        {
-            "id": 234,
-            "title": "Today is the day v2",
-            "url": "",
-            "class": "event-success",
-            "start": 1478765800000, // Milliseconds
-            "end": 1478784900000 // Milliseconds
-        },
-        {
-            "id": "294",
-            "title": "This is information class ",
-            "url": "http://www.example.com/",
-            "class": "event-info",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "297",
-            "title": "This is success event",
-            "url": "http://www.example.com/",
-            "class": "event-success",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "54",
-            "title": "This is simple event",
-            "url": "http://www.example.com/",
-            "class": "",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "532",
-            "title": "This is inverse event",
-            "url": "",
-            "class": "event-inverse",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "548",
-            "title": "This is special event",
-            "url": "",
-            "class": "event-important",
-            "start": 1478765800000,
-            "end":   1478765800000
-        },
-        {
-            "id": "295",
-            "title": "Event 3",
-            "url": "",
-            "class": "event-important",
-            "start": 1478765800000,
-            "end":   1478765800000
-        }
-        ]; }
+          events_source: function () {
+            return arr;
+      }, modal: "#events-modal"
       });
     });
+    //$("#modal-link").href=""
 
 })
 </script>

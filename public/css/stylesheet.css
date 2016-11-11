@@ -276,8 +276,7 @@ label.workout-label{
   text-align: center;
 }
 #calendar {
-  height: 550px;
-  overflow-y: scroll;
+/*  overflow-y: scroll;*/
   margin-top: 50px;
 }
 #cal-slide-content a.event-item {
