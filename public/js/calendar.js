@@ -1103,6 +1103,9 @@ if(!String.prototype.formatNum) {
 					})
 					.data('handled.bootstrap-calendar', true).data('handled.event-id', event.id);
 			}
+			console.log(url);
+			console.log($("modal-link"));
+			$("#modal-link")[0].href=url;
 			modal.modal('show');
 		});
 	};
