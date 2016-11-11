@@ -340,44 +340,6 @@
       }
     },
     {
-      "name": "Abs",
-      "id": "core",
-      "workoutInfo": {
-        "image": "/assets/background2.jpg",
-        "exercises": [
-          {
-            "name": "Planks",
-            "weight": "3:00",
-            "sets": "3",
-            "reps": "10",
-            "rest": "60"
-          },
-          {
-            "name": "Crunches",
-            "weight": "0",
-            "sets": "3",
-            "reps": "75",
-            "rest": "60"
-          },
-          {
-            "name": "Medicine Ball Lifts",
-            "weight": "25",
-            "sets": "3",
-            "reps": "50",
-            "rest": "30"
-          },
-          {
-            "name": "Jumps",
-            "weight": "25",
-            "sets": "3",
-            "reps": "25",
-            "rest": "30"
-          }
-        ],
-        "timeCompleted": "Fri Nov 11 2016"
-      }
-    },
-    {
       "name": "Cardio",
       "id": "Nm1XW",
       "workoutInfo": {
@@ -392,23 +354,6 @@
           }
         ],
         "timeCompleted": "Wed Nov 09 2016"
-      }
-    },
-    {
-      "name": "Test",
-      "id": "IOQOh",
-      "workoutInfo": {
-        "image": "/assets/background2.jpg",
-        "exercises": [
-          {
-            "name": "Test",
-            "weight": "10",
-            "sets": "3",
-            "reps": "10",
-            "rest": "10"
-          }
-        ],
-        "timeCompleted": "Tues Nov 08 2016"
       }
     }
   ],
