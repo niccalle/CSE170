@@ -21,6 +21,15 @@
       </div>
     </div>
 </div>
+<div class="calendar-header row">
+  <button type="button" class="btn btn-secondary" id="prev" onclick="prev()">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  </button>
+  <span id="cname">Text</span>
+  <button type="button" class="btn btn-secondary" id="next" onclick="next()">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  </button>
+</div>
 <div id="calendar"></div>
 
 <div class="modal fade" id="events-modal">
@@ -40,6 +49,8 @@
 </div>
 
 <script type="text/javascript">
+  var calendar;
+
 function getRandomColor() {
   var colors = ["event-warning", "event-success", "event-inverse", "event-info", "event-important", "event-special", ""];
   var index = getRandomInt(0, colors.length);
@@ -97,7 +108,6 @@ function createEvent(workoutArray, date){
 
 $(document).ready(function(){
     var prevWorkouts;
-    var calendar;
     $.get("/workoutsCompleted").done(function(data){
       prevWorkouts = data;
       var fmtWrkts = getFormattedPrevWorkouts(prevWorkouts);
@@ -116,8 +126,18 @@ $(document).ready(function(){
             return arr;
       }, modal: "#events-modal"
       });
+      console.log(calendar);
+      document.getElementById("cname").textContent=calendar.getMonth();
     });
-    //$("#modal-link").href=""
+});
 
-})
+function prev() {
+  calendar.navigate('prev');
+  document.getElementById("cname").textContent=calendar.getMonth();
+}
+
+function next() {
+  calendar.navigate('next');
+  document.getElementById("cname").textContent=calendar.getMonth();
+}
 </script>
