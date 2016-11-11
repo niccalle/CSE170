@@ -64,50 +64,63 @@ function getTime(str) {
   return d.getTime();
 }
 
+function getFormattedPrevWorkouts(jsonWkts){
+
+  var hash = {};
+
+  for(var i = 0; i < jsonWkts.workoutsCompleted.length; i++ ){
+    var workout = jsonWkts.workoutsCompleted[i];
+    var workoutDate = workout.workoutInfo.timeCompleted;
+    if(!hash.hasOwnProperty(workoutDate)){
+      hash[workoutDate] = [];
+    }
+    workout.workoutInfo.exercises.unshift(workout.name);
+    hash[workoutDate].push(createEvent(workout.workoutInfo.exercises, workoutDate));
+  }
+
+  return hash;
+}
+
+function createEvent(workoutArray, date){
+  var name = workoutArray[0];
+  var title = name;
+  var res = {};
+  var url = title.split(' ').join('%20');
+  res["title"] = title;
+  // for (var i = 1; i < workoutArray.length; i++) {
+  //   var obj = workoutArray[i];
+  //   var str = "";
+  //   str += "\n" + obj.name + "- " + obj.sets + " sets of " + obj.reps + " reps X " + obj.weight + " lb\n";
+  //   res["title"] += str; 
+  // }
+  res["class"] = getRandomColor();
+  res["start"] = getTime(date);
+  res["url"] = '/workoutInfo/' + url;
+  return res;
+}
+
 $(document).ready(function(){
     var prevWorkouts;
     var calendar;
     $.get("/workoutsCompleted").done(function(data){
       prevWorkouts = data;
-
-
-
+      var fmtWrkts = getFormattedPrevWorkouts(prevWorkouts);
+      console.log(fmtWrkts);
+      var arr = [];
+      for(var i in fmtWrkts){
+        var temp = fmtWrkts[i];
+        for (var j = 0; j < temp.length; j++) {
+          arr.push(temp[j]);
+        }
+      }
+      console.log(arr);
 
       calendar = $("#calendar").calendar(
       {
         tmpl_path: "/assets/bower_components/bootstrap-calendar/tmpls/",
-          events_source: function () { return [ {
-            "title": "This is warning class event with very long title to check how it fits to evet in day view",
-            "class": getRandomColor(),
-            "start": 1478764800000, // Milliseconds
-        },
-        {
-            "title": "Today is the day v2",
-            "class": getRandomColor(),
-            "start": 1478765800000, // Milliseconds
-        },
-        {
-            "id": "532",
-            "title": "This is inverse event",
-            "class": getRandomColor(),
-            "start": 1479369600000,
-            "end":   1479369600000
-        },
-        {
-            "id": "548",
-            "title": "This is special event",
-            "class": getRandomColor(),
-            "start": 1478678400000,
-            "end":   1478678400000
-        },
-        {
-            "id": "295",
-            "title": "Event 3",
-            "class": getRandomColor(),
-            "start": 1478678400000,
-            "end":   1478678400000
-        }
-        ]; }
+          events_source: function () {
+            return arr;
+      }
       });
     });
 
