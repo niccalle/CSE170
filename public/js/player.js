@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   var widgetIframe = document.getElementById('sc-widget'),
       widget       = SC.Widget(widgetIframe);
-  var seconds = 20; //The seconds for the timer
+  var seconds = 0; //The seconds for the timer
   var playlist;  //Object that holds the tracks, name, and ID
   var songNum = 0; //Which song number we're on right now
   var startTimer; //Returned value for setInterval, use it to start and stop the timer
@@ -18,6 +18,7 @@ $(document).ready(function(){
   var set = 1;
   var factor = 1;
   var playing = false;
+  var paused = false;
   var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
   var completedWorkout = {
     "name": "",
@@ -32,7 +33,6 @@ $(document).ready(function(){
   $(document).keydown(function(e) {
 
     kkeys.push( e.keyCode );
-    console.log(kkeys);
     if ( kkeys.toString().indexOf( konami ) >= 0 ) {
 
       $(document).unbind('keydown',arguments.callee);
@@ -40,7 +40,6 @@ $(document).ready(function(){
       // do something awesome
       factor = 10;
       seconds /= factor;
-      console.log("KONAMI!!!");
       $(".navbar").css("background-color", "yellow");
 
     }
@@ -66,11 +65,26 @@ $(document).ready(function(){
   /*When we click on the clock, play the soundcloud song*/
   function canvasListener(){
     $(".canvas").click(function(){
+      //Either start a new song or continue playing
+      console.log("Clicked");
       if(!playing){
+        //When we have to load a song
+        if(seconds == 0){
+          seconds = parseInt(currExercise.rest)/factor;
+          paused = false;
+        }
         $("#mycanvas").remove();
         $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
         widget.play();
         playing = true;
+      }
+      else{
+        $("#mycanvas").remove();
+        $("<span class=\"glyphicon glyphicon-play\" id=\"mycanvas\"></span>").appendTo(".canvas");
+        clearInterval(startTimer);
+        widget.pause();
+        playing = false;
+        paused = true;
       }
 
     });
@@ -79,7 +93,6 @@ $(document).ready(function(){
   /*Updates the clock and if the seconds hits 0, load the next song*/
   function updateSeconds(){
     seconds--;
-    console.log(seconds);
     // $("#timer").text(seconds);
     if(seconds == 0){
       clearInterval(startTimer);
@@ -118,7 +131,7 @@ $(document).ready(function(){
   }
   /*Loads our invisible widget with the next track*/
   function loadSong(track){
-    seconds = parseInt(currExercise.rest)/factor;
+    //seconds = parseInt(currExercise.rest)/factor;
     updateText();
     $("#mycanvas").remove();
     $("<span class=\"glyphicon glyphicon-play\" id=\"mycanvas\"></span>").appendTo(".canvas");
@@ -172,12 +185,13 @@ $(document).ready(function(){
     widget.bind(SC.Widget.Events.PLAY, function(){
       // $("#mycanvas").remove();
       // $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
-      canvasListener();
+      //canvasListener();
       drawCanvas(seconds, true);
       startTimer =  setInterval(updateSeconds, 1000);
       var speech = "Begin set " + set + " of " + currExercise.name + " at "
         + currExercise.weight + "pounds for " + currExercise.reps + "reps";
-      responsiveVoice.speak(speech, "UK English Male");
+      if(!paused)
+        responsiveVoice.speak(speech, "UK English Male");
 
     });
   });
