@@ -24,42 +24,53 @@
     </div>
 </div>
 
-  <ul id="whole_list">
-    <li class="each-exercise">
-      <div class="set-row text-center set-name">
-        <span class="delete">
-          <button type="button" class="delete-exercise-btn" id="remove-btn">
-            <span class="glyphicon glyphicon-remove remove-btn" aria-hidden="true"></span>
-          </button>
-        </span>
+<div class="row add-workouts">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-info" id="add-exercise-btn">
+      Add exercise
+    </button>
+    <button type="button" class="btn btn-success" id="submit-workout-btn" >
+      Submit
+    </button>
+  </div>
+</div>
 
-        <div class="set-input">
+<ul id="whole_list">
+  <li class="each-exercise">
+    <div class="set-row text-center set-name">
+      <span class="delete">
+        <button type="button" class="delete-exercise-btn" id="remove-btn">
+          <span class="glyphicon glyphicon-remove remove-btn" aria-hidden="true"></span>
+        </button>
+      </span>
 
-          <input class="set-name-input" type="text" name="exercise" value="" placeholder="Exercise name" >
-        </div>
-      </div>
-      <div class="set-row">
-        <label id="weight-label"></label>
-        <input class="exercise-input" type="text" name="weight" value="" placeholder = "Weight">
-        lb
-      </div>
-      <div class="set-row">
-        <label id="sets-label"></label>
-        <input class="exercise-input" type="text" name="sets" value="" style="margin-left: 30px;" placeholder="# of ">
-        sets
-        <label id="reps-label"></label>
-        <input class="exercise-input" type="text" name="reps" value="" style="margin-left: 70px;" placeholder="# of ">
-        reps
-      </div>
-      <div class="set-row">
-        <label id="rest-label"></label>
-        <input class="exercise-input" type="text" name="rest" value="" placeholder="Rest">
-        secs
-      </div>
-    </li>
-  </ul>
+      <div class="set-input">
 
-  <div class="row add-workouts">
+        <input class="set-name-input" type="text" name="exercise" value="" placeholder="Exercise name" >
+      </div>
+    </div>
+    <div class="set-row">
+      <label id="weight-label"></label>
+      <input class="exercise-input" type="text" name="weight" value="" placeholder = "Weight">
+      lb
+    </div>
+    <div class="set-row">
+      <label id="sets-label"></label>
+      <input class="exercise-input" type="text" name="sets" value="" style="margin-left: 30px;" placeholder="# of ">
+      sets
+      <label id="reps-label"></label>
+      <input class="exercise-input" type="text" name="reps" value="" style="margin-left: 70px;" placeholder="# of ">
+      reps
+    </div>
+    <div class="set-row">
+      <label id="rest-label"></label>
+      <input class="exercise-input" type="text" name="rest" value="" placeholder="Rest">
+      secs
+    </div>
+  </li>
+</ul>
+
+<!--   <div class="row add-workouts">
     <div class="col-xs-12">
       <button type="button" class="btn btn-info" id="add-exercise-btn">
         Add exercise
@@ -68,7 +79,7 @@
         Submit
       </button>
     </div>
-  </div>
+  </div> -->
 
 
 

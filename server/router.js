@@ -10,6 +10,20 @@ module.exports = function(app){
     res.render("home");
   });
 
+  app.post("/login", function(req,res){
+    var login = JSON.parse(req.body.data);
+    var found = false;
+    for(var i = 0; i < json.accounts.length; i++){
+      var account = json.accounts[i];
+      if(login.username == account.username
+        && login.password == account.password){
+          res.send("success");
+          found = true;
+        }
+    }
+    if(!found)
+      res.send("failure");
+  })
   //Render the workout page
   app.get("/chooseWorkout", function(req,res){
     res.render("chooseWorkout");
@@ -61,7 +75,18 @@ module.exports = function(app){
   app.post("/submitWorkout", function(req,res){
     var workout = JSON.parse(req.body.data);
     helper.getImage(workout);
-    json.workouts.push(workout);
+    var found = false;
+    for(var i = 0; i < json.workouts.length; i++){
+      if(json.workouts[i].name == workout.name){
+        json.workouts[i] = workout;
+        found = true;
+        break;
+      }
+    }
+    if(!found){
+      json.workouts.push(workout);
+    }
+
     fs.writeFile('./server/data.json', JSON.stringify(json,null,2), 'utf8', function(){res.send("success!");});
 
   })
@@ -84,4 +109,14 @@ module.exports = function(app){
     //Retrieve just the names of the workouts using helper
     res.render("workoutCalendar", {"workouts": json.workoutsCompleted});
   });
+
+  //Edit a workout
+  app.get("/editWorkout/:workout", function(req,res){
+    var findFunc = helper.findHelper(req.params.workout);
+    res.render("editWorkout", json.workouts.find(findFunc));
+  })
+
+  app.get("/workoutsCompleted", function(req, res) {
+    res.send({"workoutsCompleted": json.workoutsCompleted});
+  })
 }

@@ -268,5 +268,103 @@
         }
       ]
     }
+  ],
+  "workoutsCompleted": [
+    {
+      "name": "Leg Day",
+      "id": "legs",
+      "workoutInfo": {
+        "image": "/assets/background9.jpg",
+        "exercises": [
+          {
+            "name": "Bench Press",
+            "weight": "135",
+            "sets": "3",
+            "reps": "5",
+            "rest": "180"
+          },
+          {
+            "name": "Push ups",
+            "weight": "0",
+            "sets": "1",
+            "reps": "20",
+            "rest": "60"
+          },
+          {
+            "name": "Chest Flies",
+            "weight": "35",
+            "sets": "3",
+            "reps": "8",
+            "rest": "120"
+          },
+          {
+            "name": "Incline Bench Press",
+            "weight": "35",
+            "sets": "3",
+            "reps": "8",
+            "rest": "120"
+          },
+          {
+            "name": "Crossover Cable Flies",
+            "weight": "50",
+            "sets": "3",
+            "reps": "8",
+            "rest": "120"
+          }
+        ],
+        "timeCompleted": "Wed Nov 09 2016"
+      }
+    },
+    {
+      "name": "Chest Day",
+      "id": "chest",
+      "workoutInfo": {
+        "image": "/assets/background4.jpg",
+        "exercises": [
+          {
+            "name": "Pectoral Flies",
+            "weight": "100",
+            "sets": "3",
+            "reps": "10",
+            "rest": "60"
+          },
+          {
+            "name": "Crunches",
+            "weight": "50",
+            "sets": "3",
+            "reps": "25",
+            "rest": "120"
+          }
+        ],
+        "timeCompleted": "Sat Nov 12 2016"
+      }
+    },
+    {
+      "name": "Cardio",
+      "id": "Nm1XW",
+      "workoutInfo": {
+        "image": "/assets/background9.jpg",
+        "exercises": [
+          {
+            "name": "Bench Press",
+            "weight": "135",
+            "sets": "3",
+            "reps": "5",
+            "rest": "180"
+          }
+        ],
+        "timeCompleted": "Wed Nov 09 2016"
+      }
+    }
+  ],
+  "accounts": [
+    {
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "username": "test",
+      "password": "password"
+    }
   ]
 }

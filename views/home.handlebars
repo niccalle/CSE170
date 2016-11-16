@@ -1,25 +1,3 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1 class="text-center">Hello!!</h1>
-    </div>
-  </div>
-  <div class="form-group col-xs-12">
-    <label for="usr">Name:</label>
-    <input type="text" class="form-control" id="usr">
-  </div>
-  <div class="form-group col-xs-12">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
-  </div>
-  <div class="col-xs-4">
-    <a href="/chooseWorkout">
-      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Login!</button>
-    </a>
-  </div>
-</div> -->
-<!-- Compiled and minified JavaScript -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
 <link rel="stylesheet" type="text/css" href="/css/loginstyle.css" >
 <div class="login-box">
   <div class="credential-box">
@@ -35,10 +13,30 @@
     </div>
   </div>
   <div class="login-btn-box">
-    <a href="/workoutList">
+    <a href="#" id="login-button">
       <div class="container">
         <label style="font-size: large"> Login </label>
       </div>
     </a>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#login-button").click(function(){
+      var data = {
+        "username": $("#usr").val(),
+        "password": $("#pwd").val()
+      }
+      $.post("/login", {"data": JSON.stringify(data)})
+       .done(function(data){
+         if(data == "success")
+          location.href='/workoutList';
+         else {
+          $("#pwd").css("border-color", "red");
+          $("#usr").css("border-color", "red")
+
+         }
+       })
+    })
+  })
+</script>
