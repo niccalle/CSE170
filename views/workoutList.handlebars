@@ -26,9 +26,11 @@
 
   <ul class="workouts" id="whole_list">
     {{#each workouts}}
+      <a href="/workoutInfo/{{this.name}}">
         <li class="each_workout" style="background-image: url('{{this.workoutInfo.image}}');" id="workouts_list-{{@index}}">
-          <a href="/workoutInfo/{{this.name}}"><label class="workout-label">{{this.name}}</label></a>
+        <label class="workout-label">{{this.name}}</label>
           <label class="remove-btn">x</label>
+      </li>
       </a>
     {{/each}}
   </ul>

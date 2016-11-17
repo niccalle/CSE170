@@ -108,14 +108,20 @@
           /*TODO: Fill the exercises list with objects that resemble the data.json exercises*/
 
           var thisExercise = {};
-          var exerciseName = $(this).find("input[name=exercise]").val();
+          var $name = $(this).find("input[name=exercise]");
+          var exerciseName = $name.val();
+          if(exerciseName.length == 0){
+            $name.attr("placeholder","Please enter a name!");
+            $name.css("border-color","red");
+            validInputs = false;
+          }
           var weight = $(this).find("input[name=weight]").val();
           var $scope = $(this);
           ["weight", "sets", "reps", "rest"].forEach(function(element){
             $input = $scope.find("input[name="+element+"]");
             var amount = $input.val();
             thisExercise[element] = amount;
-            if(isNaN(amount) || parseInt(amount, 10) < 0){
+            if(amount.length == 0 || parseInt(amount, 10) < 0){
               $input.val("");
               $input.attr("placeholder","Number only!");
               $input.css("border-color","red");
