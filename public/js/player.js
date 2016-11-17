@@ -75,7 +75,18 @@ $(document).ready(function(){
         }
         $("#mycanvas").remove();
         $("<canvas id=\"mycanvas\" width=\"345\" height=\"345\"></canvas>").appendTo(".canvas");
-        widget.play();
+        if(playlist.name == "None"){
+          drawCanvas(seconds, true);
+          startTimer =  setInterval(updateSeconds, 1000);
+          var speech = "Begin set " + set + " of " + currExercise.name + " at "
+            + currExercise.weight + "pounds for " + currExercise.reps + "reps";
+          if(!paused)
+            responsiveVoice.speak(speech, "UK English Male");
+        }
+        else{
+          widget.play();
+        }
+
         playing = true;
       }
       else{
@@ -112,8 +123,8 @@ $(document).ready(function(){
       }
       console.log(completedWorkout);
       saveProgress();
-
-      loadSong(playlist.tracks[songNum%playlist.tracks.length]);
+      if(playlist.name != "None")
+        loadSong(playlist.tracks[songNum%playlist.tracks.length]);
     }
   }
 
