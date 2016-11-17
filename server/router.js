@@ -32,7 +32,7 @@ module.exports = function(app){
   //Render the workout list
   app.get("/workoutList", function(req,res){
     //Retrieve just the names of the workouts using helper
-    res.render("workoutList", {"workouts": json.workouts});
+    res.render("workoutList2", {"workouts": json.workouts});
   });
 
   //Render the workoutInfo page
