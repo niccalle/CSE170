@@ -302,3 +302,7 @@ label.workout-label{
   position: absolute;
   margin-top: 5px;
 }
+
+.navbar-right {
+  margin-right: 40px;
+}

@@ -8,6 +8,11 @@
   ga('create', 'UA-87335227-1', 'auto');
   ga('send', 'pageview');
 
+
+function sendPageView() {
+  // console.log("tracked");
+  ga('send', 'event', 'button', 'click');
+}
 </script>
 
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
@@ -30,7 +35,7 @@
       </div>
   </div>
   <ul class="workouts" id="whole_list">
-    <a href="/addWorkout">
+    <a href="/addWorkout" onclick="sendPageView()">
       <li class="each_workout" style="background-image: url('/assets/custom.jpg');"></li>
     </a>
     {{#each workouts}}

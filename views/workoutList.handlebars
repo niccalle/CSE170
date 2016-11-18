@@ -8,6 +8,11 @@
   ga('create', 'UA-87335227-1', 'auto');
   ga('send', 'pageview');
 
+function sendPageView() {
+  // console.log("tracked");
+  ga('send', 'event', 'button', 'click');
+}
+
 </script>
 
 
@@ -17,7 +22,7 @@
         Workouts
       </div>
 
-      <div class="navbar-brand navbar-right" style="margin-left: 25px">
+      <div class="navbar-brand navbar-right">
         <a href="/" >
           Sign Out
         </a>
@@ -29,7 +34,7 @@
 
   <div class="row">
     <div class="col-xs-4">
-      <div class="col-xs-4" style="margin-left:-20px;"><a href="/addWorkout"><button type="button" class="btn btn-info" id="add-exercise-btn">Add a new workout</button></a></div>
+      <div class="col-xs-4" style="margin-left:-20px;"><a href="/addWorkout"><button type="button" class="btn btn-info" id="add-exercise-btn" onclick="sendPageView()">Add a new workout</button></a></div>
     </div>
     <div class="col-xs-8" style="margin-right: -50px; float:right;">
       <div class="col-xs-4"><a href="/workoutCalendar"><button type="button" class="btn btn-success" id="add-exercise-btn">Your Past Workouts</button></a>
