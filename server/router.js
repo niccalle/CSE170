@@ -35,10 +35,6 @@ module.exports = function(app){
     res.render("workoutList", {"workouts": json.workouts});
   });
 
-  app.get("/workoutList2", function(req,res){
-    //Retrieve just the names of the workouts using helper
-    res.render("workoutList2", {"workouts": json.workouts});
-  });
   //Render the workoutInfo page
   app.get("/workoutInfo/:workout", function(req,res){
     //Function to match object with workout name
@@ -112,6 +108,11 @@ module.exports = function(app){
   app.get("/workoutCalendar", function(req,res){
     //Retrieve just the names of the workouts using helper
     res.render("workoutCalendar", {"workouts": json.workoutsCompleted});
+  });
+
+  app.get("/workoutCalendar2", function(req,res){
+    //Retrieve just the names of the workouts using helper
+    res.render("workoutCalendar2", {"workouts": json.workoutsCompleted});
   });
 
   //Edit a workout
