@@ -1,4 +1,29 @@
 <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<style media="screen">
+.workout-info{
+    /*position: relative;*/
+    /*background-image: url("/assets/wide-bench.jpg");*/
+    background-size: cover;
+    background-position: center;
+    height: 15%;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: .5px solid lightgrey;
+    border-radius: 5px;
+}
+
+#whole_list {
+    height: 88%;
+    width: 100%;
+    padding: 0 25px;
+    display: inline-block;
+    overflow-y: scroll;
+    position: absolute;
+    list-style-type:none;
+}
+
+</style>
   <div class="navbar navbar-default navbar-fixed-top" id="navbar">
 
     <div class="container-fluid">
@@ -17,14 +42,20 @@
       </div>
     </div>
 </div>
-<div class="row" style="margin-top:50px;">
-  <div class="col-xs-12">
-    <ul class="list-group">
-      {{#each workoutInfo.exercises}}
-      <li class="list-group-item">{{this.name}}: {{this.sets}}x{{this.reps}} {{this.weight}}</li>
-      {{/each}}
-    </ul>
-  </div>
+<div class="test">
+  <ul id="whole_list">
+    {{#each workoutInfo.exercises}}
+    <li class="workout-info">
+      <div class="name-weight">
+        {{this.name}} {{this.weight}}
+      </div>
+      <div class="reps-rest">
+        : {{this.sets}}x{{this.reps}} 
+      </div>
+
+    </li>
+    {{/each}}
+  </ul>
 </div>
   <div class="col-xs-4">
     <a href="/workout/{{name}}/playlist">
@@ -36,5 +67,3 @@
       <button id="singlebutton" name="singlebutton" class="btn btn-warning">Edit <span class="glyphicon glyphicon-pencil"></span></button>
     </a>
   </div>
-
-</div>
