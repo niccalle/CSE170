@@ -1115,8 +1115,10 @@ if(!String.prototype.formatNum) {
 		    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 		    ga('create', 'UA-87335227-1', 'auto');
-		    ga('send', 'event', 'button', 'click');
-		    //console.log("TRaked");
+		    var url = window.location.href.split("/")[3];
+		    var urlStr = url + 'button';
+		    ga('send', 'event', urlStr, 'click');
+		    console.log(urlStr);
 
 			$("#modal-link")[0].href=url;
 			modal.modal('show');
