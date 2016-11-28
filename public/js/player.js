@@ -4,7 +4,7 @@
   When the timer hits 0, the interval is stopped and the next song is loaded.
 */
 $(document).ready(function(){
-
+  $('#workoutModal').modal('show');
   var widgetIframe = document.getElementById('sc-widget'),
       widget       = SC.Widget(widgetIframe);
   var seconds = 0; //The seconds for the timer
