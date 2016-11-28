@@ -61,7 +61,7 @@ body {
   width: 100%;
   border-bottom: solid;
   border-width: thin;
-  border-color: lightgrey;
+  /*border-color: lightgrey;*/
   background-color: ##f9fbf9;
   font-weight: thin;
 }
@@ -95,7 +95,7 @@ img{
 }
 .navbar{
   height: 5%;
-  background-color:#d6e6d4;
+  background-color: #FBFBFB;
 }
 #navbar-add{
   height: auto;
@@ -150,7 +150,7 @@ label.workout-label{
   border-bottom: solid;
   border-width: thin;
   border-color: lightgrey;
-  background-color: #9da69c;
+  background-color: ghostwhite;
   color: white;
   padding-top: 5px;
 }
@@ -303,7 +303,6 @@ label.workout-label{
   margin-top: 5px;
 }
 
-.navbar-right {
-/*  margin-right: 40px;*/
+.navbar-default {
+  border-bottom: 0.5px solid lightgrey;
 }
-

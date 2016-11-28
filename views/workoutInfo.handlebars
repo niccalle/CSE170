@@ -14,15 +14,32 @@
 }
 
 #whole_list {
-    height: 88%;
+    height: 75%;
     width: 100%;
     padding: 0 25px;
     display: inline-block;
     overflow-y: scroll;
-    position: absolute;
     list-style-type:none;
 }
 
+.name-weight{
+    height: 66%;
+    border-bottom: .5px solid lightgrey;
+    padding: 15px;
+    background-color: ghostwhite;
+}
+
+.weight{
+  float: right;
+}
+
+.reps-rest{
+  text-align: center;
+}
+
+.sets{
+  border-right: .5px solid lightgrey;
+}
 </style>
   <div class="navbar navbar-default navbar-fixed-top" id="navbar">
 
@@ -47,23 +64,27 @@
     {{#each workoutInfo.exercises}}
     <li class="workout-info">
       <div class="name-weight">
-        {{this.name}} {{this.weight}}
+        {{this.name}} <span class="weight">{{this.weight}} <span style="color: grey; font-weight: 100;">LBS</span></span>
       </div>
-      <div class="reps-rest">
-        : {{this.sets}}x{{this.reps}} 
+      <div class="reps-rest container">
+        <span class="sets col-xs-6">{{this.sets}}x{{this.reps}} <span style="color: grey; font-weight: 100;">REPS</span></span>
+        <span class="rest col-xs-6">{{this.rest}} <span style="color: grey; font-weight: 100;">SEC</span> </span>
       </div>
 
     </li>
     {{/each}}
   </ul>
+  <div class="container">
+    <div class="col-xs-4">
+      <a href="/workout/{{name}}/playlist">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Confirm</button>
+      </a>
+    </div>
+    <div class="col-xs-4 col-xs-offset-4">
+      <a href="/editWorkout/{{name}}">
+        <button id="singlebutton" name="singlebutton" class="btn btn-warning">Edit <span class="glyphicon glyphicon-pencil"></span></button>
+      </a>
+    </div>
+  </div>
+
 </div>
-  <div class="col-xs-4">
-    <a href="/workout/{{name}}/playlist">
-      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Confirm</button>
-    </a>
-  </div>
-  <div class="col-xs-4 col-xs-offset-4">
-    <a href="/editWorkout/{{name}}">
-      <button id="singlebutton" name="singlebutton" class="btn btn-warning">Edit <span class="glyphicon glyphicon-pencil"></span></button>
-    </a>
-  </div>
