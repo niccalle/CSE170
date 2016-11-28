@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<!-- <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
 <div class="navbar navbar-default navbar-fixed-top" id="navbar">
     <div class="container-fluid">
       <div class="navbar-brand navbar-left">
@@ -40,3 +40,45 @@
 
   </div>
 </div>
+ -->
+
+ <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" >
+<div id="workoutModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <div class="col-xs-12 text-center">
+          <h1>Workout</h1>
+        </div>
+        <div class="col-xs-12 text-center">
+          <h1>{{workout}}</h1>
+        </div>
+        <div class="col-xs-12 text-center">
+          <h1>Playlist</h1>
+        </div>
+        <div class="col-xs-12 text-center">
+          <h1>{{playlist}}</h1>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+          <a href="/workout/{{workout}}/{{playlist}}/begin">
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Begin</button>
+          </a>
+          </div>
+        </div>
+      <div class="col-xs-4 col-xs-offset-4">
+        <a href="/workoutList">
+          <button type="button" class="close" data-dismiss="modal">&times;Cancel</button>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div><!-- Modal -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#workoutModal').modal('show');
+    });
+</script>
